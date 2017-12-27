@@ -1,0 +1,22 @@
+class Person
+
+    private name;
+
+    construct()
+        static abc = 0;        
+    end
+    
+    def hello(name: string)
+        var abc;
+        abc = 2;
+        println (2+2)*4;
+    end
+
+    /*
+    This is a comment.
+    Define a function
+    */
+    def bye(name)
+        print "Bye", "Bye", :name:;
+    end
+end

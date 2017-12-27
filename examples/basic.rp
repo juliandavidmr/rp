@@ -1,0 +1,4 @@
+def hello()
+    abc = 2;
+    println 2*4;
+end

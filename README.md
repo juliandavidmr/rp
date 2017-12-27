@@ -67,28 +67,16 @@ function goobbye(){
 ## Conditions
 
 ```ruby
-def hello
-    abc = "Hello"
-    println abc
-end
-
-def goobbye
-    abc = "Bye"
-    print abc
+if abc
+    print "This is " . abc
 end
 ```
 
 _The equivalent in PHP is:_
 
 ```php
-function hello(){
-    $abc = "Hello";
-    echo $abc . PHP_EOL;
-}
-
-function goobbye(){
-    $abc = "Bye";
-    echo $abc;
+if($abc) {
+    echo "This is " . $abc;
 }
 ```
 

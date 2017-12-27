@@ -36,13 +36,15 @@ $abc = 2;
 
 ## Functions
 
+If the function has no arguments then the parentheses can be omitted
+
 ```ruby
-def hello()
+def hello
     abc = "Hello"
     println abc
 end
 
-def goobbye()
+def goobbye
     abc = "Bye"
     print abc
 end
@@ -52,22 +54,50 @@ _The equivalent in PHP is:_
 
 ```php
 function hello(){
-    $abc="Hello";
+    $abc = "Hello";
     echo $abc . PHP_EOL;
 }
 
 function goobbye(){
-    $abc="Bye";
+    $abc = "Bye";
     echo $abc;
 }
 ```
 
+## Conditions
+
+```ruby
+def hello
+    abc = "Hello"
+    println abc
+end
+
+def goobbye
+    abc = "Bye"
+    print abc
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+function hello(){
+    $abc = "Hello";
+    echo $abc . PHP_EOL;
+}
+
+function goobbye(){
+    $abc = "Bye";
+    echo $abc;
+}
+```
 
 ## TODO
 
 - [ ] Loops
 - [ ] Classes
 - [ ] Decorators: Rest...
+- [ ] Conditions
 - [ ] Direct access to PHP's own functions
 
 > Many more features come...

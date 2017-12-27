@@ -3,12 +3,20 @@ function exec (input) {
 }
 
 var twenty = exec(`
-def hello()
-    abc = "Hello"
-    println abc
+if abc
+    print "This is " . abc
 end
 
-def goobbye()
+def hello
+    abc = "Hello"
+    println abc
+
+    if abc
+        print "Este es abc"
+    end
+end
+
+def goobbye
     abc = "Bye"
     print abc
 end

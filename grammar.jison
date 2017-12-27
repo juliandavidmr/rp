@@ -1,4 +1,4 @@
-/* description: Parses end executes mathematical expressions. */
+/* rp:  rp is a php compiler */
 
 /* lexical grammar */
 %lex
@@ -14,16 +14,21 @@
 '.'                   return 'DOT'
 "def"                 return 'DEF'
 "end"                 return 'END'
-/* Privacity */
+
+/* privacity */
 "public"              return 'PUBLIC'
 "private"             return 'PRIVATE'
 "protected"           return 'PROTECTED'
+
 /* echo */
 "println"             return 'PRINTLN'
 "print"               return 'PRINT'
 
+/* conditons */
+"if"                  return 'IF'
+
 /* Objects */
-[a-zA-Z_][a-zA-Z0-9_]*   return 'ID'
+[a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
 /* \((\s*\w+\s*,*)*\)       return 'ARGS' */
 /* \(\s*(\s*\w+\s*,*)*\s*\) return 'ARGS' */
 "%"                   return '%'
@@ -46,7 +51,6 @@
 \"(?:\"\"|[^"])*\"    return 'STRING'
 <<EOF>>               return 'EOF'
 .                     return 'INVALID'
-%options flex
 
 /lex
 
@@ -63,17 +67,16 @@
 %left 'AND' 'OR' 
 %left '=' '<>'
 %left UMINUS
+%left IF
 
 %start expressions
 
 %% /* language grammar */
 
 expressions
-    : e EOF
+    : SENTENCE* EOF
         {return $1;}
-    | FUNCTION* EOF
-        {return $1;}
-    ;
+;
 
 e
     : e '+' e
@@ -106,8 +109,10 @@ e
         {$$ = Math.pow($1, $3);}
     | '-' e %prec UMINUS
         {$$ = -$2;}
+    | e DOT e
+        {$$ = $1 + ' . ' + $3;}
     | '(' e PAR_CLOSE
-        {$$ = $e;}
+        {$$ = $e;}    
     | e '%'
         {$$ = $1 / 100;}
     | TRUE
@@ -127,21 +132,24 @@ e
 ;
 
 FUNCTION
-    : PRIVACITY? DEF ID PAR_OPEN PAR_CLOSE
+    : PRIVACITY? DEF ID (PAR_OPEN PAR_CLOSE)?
         SENTENCE*
       END
         {
             if ($1) {
-                $$ = `${ $1 } function ${ $3 }(){ ${ $6 } }` 
+                $$ = `${ $1 } function ${ $3 }(){ ${ $5 } }` 
             } else {
-                $$ = `function ${ $3 }(){ ${ $6 } }` 
+                $$ = `function ${ $3 }(){ ${ $5 } }` 
             }
         };
 
 SENTENCE
-    : ECHO
-    | VAR_ASSIGN
-    | EOF;
+    : VAR_ASSIGN
+    | CONDITION
+    | FUNCTION
+    | ECHO
+    | EOF
+;
 
 ECHO
     : PRINTLN PAR_OPEN? e PAR_CLOSE?
@@ -150,9 +158,17 @@ ECHO
         { $$ = `echo ${ $e };` }
 ;
 
+CONDITION
+    : IF PAR_OPEN? e PAR_CLOSE?
+        SENTENCE*
+      END
+        { $$ = `if(${ $3 }) { ${ $5 } }` }
+;
+
 VAR_ASSIGN
     : ID EQUAL e 
-        { $$ = '$' + $1 + '=' + $3 + ';' };
+        { $$ = '$' + $1 + '=' + $3 + ';' }
+;
 
 UNARY_OPERATOR
 	: '&'

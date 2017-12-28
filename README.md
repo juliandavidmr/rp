@@ -1,11 +1,10 @@
 # rp
 
-(in progress) rp is a php compiler, It allows you to write a more clean and comfortable new syntax. 
+(in progress) rp is a php transpiler, it allows you to write a more clean and comfortable new syntax.
 
-Clean and simple syntax, based on Ruby, CoffeeScript, Python and other languages.
+Based on Ruby, CoffeeScript, Python and other languages.
 
-- Shorter functions and shortcuts to php functions
-- Special decorators will soon be available
+- Shorter functions
 - Goodbye to the `;` and `$`, also a lot of unnecessary elements.
 
 ## Print message
@@ -80,12 +79,24 @@ if($abc) {
 }
 ```
 
+## Comments
+
+The definition of comments is the same as in php, except comments with the symbol `#`.
+
+```php
+// This a comment
+
+/*
+* Another longer comment
+*/
+```
+
 ## TODO
 
 - [ ] Loops
 - [ ] Classes
 - [ ] Decorators: Rest...
-- [ ] Conditions
+- [ ] Special conditions, as well as coffeescript
 - [ ] Direct access to PHP's own functions
 
 > Many more features come...

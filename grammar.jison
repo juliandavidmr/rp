@@ -5,15 +5,15 @@
 %%
 
 \s+                   /* skip whitespace */
-[0-9]+("."[0-9]+)?\b  return 'NUMBER'
-"true"                return 'TRUE'
-"false"               return 'FALSE'
-"not"                 return 'NOT'
-"and"                 return 'AND'
-"or"                  return 'OR'
-'.'                   return 'DOT'
-"def"                 return 'DEF'
-"end"                 return 'END'
+\/\*[\s\S]*?\*\/|\/\/.* return 'COMMENT'
+[0-9]+("."[0-9]+)?\b    return 'NUMBER'
+"true"                  return 'TRUE'
+"false"                 return 'FALSE'
+"not"                   return 'NOT'
+"and"                   return 'AND'
+"or"                    return 'OR'
+"def"                   return 'DEF'
+"end"                   return 'END'
 
 /* privacity */
 "public"              return 'PUBLIC'
@@ -30,7 +30,6 @@
 /* Objects */
 [a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
 /* \((\s*\w+\s*,*)*\)       return 'ARGS' */
-/* \(\s*(\s*\w+\s*,*)*\s*\) return 'ARGS' */
 "%"                   return '%'
 "="                   return 'EQUAL'
 "!="                  return '='
@@ -48,6 +47,7 @@
 "PI"                  return 'PI'
 "E"                   return 'E'
 ";"                   return 'SEMICOL'
+'.'                   return 'DOT'
 \"(?:\"\"|[^"])*\"    return 'STRING'
 <<EOF>>               return 'EOF'
 .                     return 'INVALID'
@@ -68,6 +68,7 @@
 %left '=' '<>'
 %left UMINUS
 %left IF
+%left DOT
 
 %start expressions
 
@@ -148,6 +149,8 @@ SENTENCE
     | CONDITION
     | FUNCTION
     | ECHO
+    | COMMENT
+        { $$ = '' }
     | EOF
 ;
 

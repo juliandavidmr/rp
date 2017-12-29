@@ -26,6 +26,18 @@ def goobbye
     abc = "Bye"
     print abc
 end
+
+class database
+    def __construct()
+        print "Initialized..."
+    end
+end
+
+class database : mysqli // Extends mysql into class database
+    def __construct()
+        print "Initialized..."
+    end
+end
 `)
 
 console.log(twenty)

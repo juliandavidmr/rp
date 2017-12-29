@@ -4,16 +4,24 @@
 %lex
 %%
 
-\s+                   /* skip whitespace */
+\s+                     /* skip whitespace */
 \/\*[\s\S]*?\*\/|\/\/.* return 'COMMENT'
 [0-9]+("."[0-9]+)?\b    return 'NUMBER'
 "true"                  return 'TRUE'
 "false"                 return 'FALSE'
+
+/* reserved words */
+"class"                 return 'CLASS'
+":"                     return 'COLON'
+"#"                     return 'HASH'
+"?"                     return 'QUESTION'
+"~"                     return 'TILDE'
+"_"                     return 'UNDERSCORE'    
+"def"                   return 'DEF'
+"end"                   return 'END'
 "not"                   return 'NOT'
 "and"                   return 'AND'
 "or"                    return 'OR'
-"def"                   return 'DEF'
-"end"                   return 'END'
 
 /* privacity */
 "public"              return 'PUBLIC'
@@ -55,6 +63,7 @@
 /lex
 
 %ebnf
+%options flex
 
 /* operator associations and precedence */
 
@@ -69,6 +78,7 @@
 %left UMINUS
 %left IF
 %left DOT
+%left COLON
 
 %start expressions
 
@@ -146,11 +156,12 @@ FUNCTION
 
 SENTENCE
     : VAR_ASSIGN
-    | CONDITION
+    | CONDITION    
     | FUNCTION
     | ECHO
+    | DEFCLASS    
     | COMMENT
-        { $$ = '' }
+        { $$ = `` }
     | EOF
 ;
 
@@ -166,6 +177,19 @@ CONDITION
         SENTENCE*
       END
         { $$ = `if(${ $3 }) { ${ $5 } }` }
+;
+
+DEFCLASS
+    : CLASS ID[classname] COLON? (ID)?\[name_extended]
+        SENTENCE*[sentence]
+      END
+        {
+            if ($name_extended && $name_extended != '') {
+                $$ = `class ${ $classname } extends ${ $name_extended } {  ${ $sentence }  }`
+            } else {
+                $$ = `class ${ $classname } { ${ $sentence } }` 
+            } 
+        }
 ;
 
 VAR_ASSIGN

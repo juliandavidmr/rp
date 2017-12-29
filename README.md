@@ -91,12 +91,48 @@ The definition of comments is the same as in php, except comments with the symbo
 */
 ```
 
+## Classes
+
+The classes to be inherited are declared after the colon symbol.
+
+> Note: The possibility of allowing the inheritance of multiple objects is being evaluated.
+
+```rb
+class database
+    def __construct()
+        print "Initialized..."
+    end
+end
+
+class database : mysqli
+    def __construct()
+        print "Initialized..."
+    end
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+class database {
+    function __construct() {
+        echo "Initialized...";
+    }
+}
+
+class database extends mysqli {
+    function __construct() {
+        echo "Initialized...";
+    }
+}
+```
+
 ## TODO
 
 - [ ] Loops
-- [ ] Classes
-- [ ] Decorators: Rest...
-- [ ] Special conditions, as well as coffeescript
-- [ ] Direct access to PHP's own functions
+- [ ] Inheritance of multiple classes
+- [ ] 'implements' function
+- [ ] Special conditions, as well as coffeescript...
+- [ ] Access to PHP's own functions
 
 > Many more features come...

@@ -28,13 +28,13 @@ def goobbye
 end
 
 class database
-    def __construct()
+    def __construct
         print "Initialized..."
     end
 end
 
 class database : mysqli // Extends mysql into class database
-    def __construct()
+    def __construct
         print "Initialized..."
     end
 end

@@ -99,13 +99,13 @@ The classes to be inherited are declared after the colon symbol.
 
 ```rb
 class database
-    def __construct()
+    def __construct
         print "Initialized..."
     end
 end
 
 class database : mysqli
-    def __construct()
+    def __construct
         print "Initialized..."
     end
 end

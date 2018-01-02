@@ -623,57 +623,60 @@ symbols_: {
   ">": 7,
   ">=": 19,
   "AND": 15,
-  "ASSIGN": 35,
-  "CLASS": 34,
+  "ARGUMENTS": 50,
+  "ARGUMENTS_repetition": 64,
+  "ASSIGN": 33,
+  "CLASS": 32,
   "COLON": 41,
-  "COMMENT": 31,
-  "CONDITION": 51,
-  "CONDITION_STMT": 50,
-  "CONDITION_repetition": 62,
-  "CONDITION_repetition2": 63,
-  "DEF": 29,
+  "COMMENT": 29,
+  "CONDITION": 52,
+  "CONDITION_STMT": 51,
+  "CONDITION_repetition": 65,
+  "CONDITION_repetition2": 66,
+  "DEF": 27,
   "DEFCLASS": 47,
   "DOT": 21,
   "E": 12,
   "ECHO": 46,
-  "ECHO_option": 56,
-  "ECHO_option2": 57,
-  "ECHO_option3": 58,
-  "ECHO_option4": 59,
-  "END": 30,
+  "ECHO_option": 58,
+  "ECHO_option2": 59,
+  "ECHO_option3": 60,
+  "ECHO_option4": 61,
+  "END": 28,
   "EOF": 1,
   "EQUAL": 16,
-  "FALSE": 24,
+  "FALSE": 40,
   "FUNCTION": 44,
-  "FUNCTION_option": 53,
-  "FUNCTION_option2": 54,
-  "FUNCTION_repetition": 55,
-  "ID": 28,
+  "FUNCTION_option": 55,
+  "FUNCTION_option2": 56,
+  "FUNCTION_repetition": 57,
+  "ID": 26,
   "IDENTICAL": 17,
-  "IF": 39,
+  "IF": 37,
   "NOT": 13,
-  "NUMBER": 25,
+  "NUMBER": 23,
   "OR": 14,
   "PAR_CLOSE": 22,
-  "PAR_OPEN": 40,
-  "PI": 27,
-  "PRINT": 33,
-  "PRINTLN": 32,
+  "PAR_OPEN": 38,
+  "PI": 25,
+  "PRINT": 31,
+  "PRINTLN": 30,
   "PRIVACITY": 49,
-  "PRIVATE": 37,
-  "PROTECTED": 38,
-  "PUBLIC": 36,
+  "PRIVATE": 35,
+  "PROTECTED": 36,
+  "PUBLIC": 34,
   "SENTENCE": 45,
-  "STRING": 26,
-  "TRUE": 23,
+  "STRING": 24,
+  "TRUE": 39,
   "VAR_ASSIGN": 48,
   "^": 9,
   "e": 43,
+  "e_group": 54,
   "error": 2,
   "expressions": 42,
-  "expressions_repetition": 52,
-  "name_extended": 60,
-  "sentence": 61
+  "expressions_repetition": 53,
+  "name_extended": 62,
+  "sentence": 63
 },
 terminals_: {
   1: "EOF",
@@ -698,24 +701,24 @@ terminals_: {
   20: "<=",
   21: "DOT",
   22: "PAR_CLOSE",
-  23: "TRUE",
-  24: "FALSE",
-  25: "NUMBER",
-  26: "STRING",
-  27: "PI",
-  28: "ID",
-  29: "DEF",
-  30: "END",
-  31: "COMMENT",
-  32: "PRINTLN",
-  33: "PRINT",
-  34: "CLASS",
-  35: "ASSIGN",
-  36: "PUBLIC",
-  37: "PRIVATE",
-  38: "PROTECTED",
-  39: "IF",
-  40: "PAR_OPEN",
+  23: "NUMBER",
+  24: "STRING",
+  25: "PI",
+  26: "ID",
+  27: "DEF",
+  28: "END",
+  29: "COMMENT",
+  30: "PRINTLN",
+  31: "PRINT",
+  32: "CLASS",
+  33: "ASSIGN",
+  34: "PUBLIC",
+  35: "PRIVATE",
+  36: "PROTECTED",
+  37: "IF",
+  38: "PAR_OPEN",
+  39: "TRUE",
+  40: "FALSE",
   41: "COLON"
 },
 TERROR: 2,
@@ -824,7 +827,7 @@ productions_: bp({
   pop: u([
   42,
   s,
-  [43, 26],
+  [43, 25],
   44,
   s,
   [45, 6],
@@ -832,11 +835,8 @@ productions_: bp({
   s,
   [46, 4, 1],
   49,
-  49,
-  50,
-  51,
-  51,
-  52,
+  s,
+  [49, 4, 1],
   52,
   53,
   53,
@@ -859,7 +859,13 @@ productions_: bp({
   62,
   62,
   63,
-  63
+  63,
+  64,
+  64,
+  65,
+  65,
+  66,
+  66
 ]),
   rule: u([
   2,
@@ -871,7 +877,7 @@ productions_: bp({
   [14, 3],
   2,
   s,
-  [1, 7],
+  [1, 6],
   6,
   s,
   [1, 6],
@@ -880,23 +886,27 @@ productions_: bp({
   5,
   3,
   c,
-  [15, 5],
+  [16, 6],
   4,
   0,
-  2,
+  c,
+  [26, 3],
   0,
   1,
+  0,
+  3,
+  0,
+  2,
   c,
-  [4, 3],
+  [6, 3],
   c,
-  [6, 4],
+  [10, 4],
   1,
   c,
-  [4, 5],
+  [10, 3],
+  2,
   c,
-  [12, 4],
-  c,
-  [4, 3]
+  [4, 6]
 ])
 }),
 performAction: function parser__PerformAction(yytext, yystate /* action[1] */, yysp, yyvstack) {
@@ -933,11 +943,7 @@ case 1:
 case 2:
     /*! Production::    e : e "+" e */
 
-    if (! isNaN(yyvstack[yysp - 2]) && ! isNaN(yyvstack[yysp - 1])) {
-        this.$ = yyvstack[yysp - 2] + yyvstack[yysp];
-    } else {
-        this.$ = yyvstack[yysp - 2] + '+' + yyvstack[yysp];
-    }
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '+');
     break;
 
 case 3:
@@ -959,82 +965,77 @@ case 4:
 case 5:
     /*! Production::    e : e AND e */
 
-    if (utils.isOperable(yyvstack[yysp - 2], yyvstack[yysp - 1])) {
-        console.log("Operable")
-        this.$ = yyvstack[yysp - 2] && yyvstack[yysp];
-    } else {
-        this.$ = yyvstack[yysp - 2] + '&&' + yyvstack[yysp];
-    }
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '&&');
     break;
 
 case 6:
     /*! Production::    e : e EQUAL e */
 
-    if (utils.isOperable(yyvstack[yysp - 2], yyvstack[yysp - 1])) {
-        this.$ = yyvstack[yysp - 2] == yyvstack[yysp];
-    } else {
-        this.$ = yyvstack[yysp - 2] + '==' + yyvstack[yysp];
-    }
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '==');
     break;
 
 case 7:
     /*! Production::    e : e IDENTICAL e */
 
-    this.$ = yyvstack[yysp - 2] + '===' + yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '===');
     break;
 
 case 8:
     /*! Production::    e : e "<>" e */
 
-    this.$ = yyvstack[yysp - 2] != yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '!=');
     break;
 
 case 9:
     /*! Production::    e : e "-" e */
 
-    this.$ = yyvstack[yysp - 2]-yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '-');
     break;
 
 case 10:
     /*! Production::    e : e "*" e */
 
-    this.$ = yyvstack[yysp - 2]*yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '*');
     break;
 
 case 11:
     /*! Production::    e : e "/" e */
 
-    this.$ = yyvstack[yysp - 2]/yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '/');
     break;
 
 case 12:
     /*! Production::    e : e ">" e */
 
-    this.$ = yyvstack[yysp - 2]>yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '>');
     break;
 
 case 13:
     /*! Production::    e : e "<" e */
 
-    this.$ = yyvstack[yysp - 2]<yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '<');
     break;
 
 case 14:
     /*! Production::    e : e ">=" e */
 
-    this.$ = yyvstack[yysp - 2]>=yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '>=');
     break;
 
 case 15:
     /*! Production::    e : e "<=" e */
 
-    this.$ = yyvstack[yysp - 2]<=yyvstack[yysp];
+    this.$ = trans.operation(yyvstack[yysp - 2], yyvstack[yysp], '<=');
     break;
 
 case 16:
     /*! Production::    e : e "^" e */
 
-    this.$ = Math.pow(yyvstack[yysp - 2], yyvstack[yysp]);
+    if (trans.isOperable(yyvstack[yysp - 2], yyvstack[yysp])) {
+        this.$ = Math.pow(yyvstack[yysp - 2], yyvstack[yysp]);
+    } else {
+        this.$ = yyvstack[yysp - 2] + '^' + yyvstack[yysp];
+    }
     break;
 
 case 17:
@@ -1058,87 +1059,91 @@ case 19:
 case 20:
     /*! Production::    e : e "%" */
 
-    this.$ = yyvstack[yysp - 1] / 100;
+    if (trans.isOperable(yyvstack[yysp - 1], 0)) {
+        this.$ = yyvstack[yysp - 1] / 100;
+    } else {
+        this.$ = `(${yyvstack[yysp - 1]}/100)`;
+    }
     break;
 
 case 21:
-    /*! Production::    e : TRUE */
+    /*! Production::    e : e_group */
 
-    this.$ = true;
+    this.$ = `${ yyvstack[yysp] }`;
     break;
 
 case 22:
-    /*! Production::    e : FALSE */
-
-    this.$ = false;
-    break;
-
-case 23:
     /*! Production::    e : NUMBER */
 
     this.$ = Number(yytext);
     break;
 
-case 24:
+case 23:
     /*! Production::    e : STRING */
+case 47:
+    /*! Production::    e_group : TRUE */
 case 48:
+    /*! Production::    e_group : FALSE */
+case 50:
     /*! Production::    FUNCTION_option : PRIVACITY */
-case 54:
-    /*! Production::    ECHO_option : PAR_OPEN */
 case 56:
-    /*! Production::    ECHO_option2 : PAR_CLOSE */
+    /*! Production::    ECHO_option : PAR_OPEN */
 case 58:
-    /*! Production::    ECHO_option3 : PAR_OPEN */
+    /*! Production::    ECHO_option2 : PAR_CLOSE */
 case 60:
+    /*! Production::    ECHO_option3 : PAR_OPEN */
+case 62:
     /*! Production::    ECHO_option4 : PAR_CLOSE */
 
     this.$ = yyvstack[yysp];
     break;
 
-case 25:
+case 24:
     /*! Production::    e : E */
 
     this.$ = Math.E;
     break;
 
-case 26:
+case 25:
     /*! Production::    e : PI */
 
     this.$ = Math.PI;
     break;
 
-case 27:
+case 26:
     /*! Production::    e : ID */
 
     this.$ = '$' + yyvstack[yysp];
     break;
 
-case 28:
+case 27:
     /*! Production::    FUNCTION : FUNCTION_option DEF ID FUNCTION_option2 FUNCTION_repetition END */
 
     if (yyvstack[yysp - 5]) {
-        this.$ = `${ yyvstack[yysp - 5] } function ${ yyvstack[yysp - 3] }(){ ${ yyvstack[yysp - 1] } }`;
+        this.$ = `${ yyvstack[yysp - 5] } function ${ yyvstack[yysp - 3] }(${ trans.arguments(yyvstack[yysp - 2]) }){ ${ yyvstack[yysp - 1] } }`;
     } else {
-        this.$ = `function ${ yyvstack[yysp - 3] }(){ ${ yyvstack[yysp - 1] } }`;
+        this.$ = `function ${ yyvstack[yysp - 3] }(${ trans.arguments(yyvstack[yysp - 2]) }){ ${ yyvstack[yysp - 1] } }`;
     }
     break;
 
-case 29:
+case 28:
     /*! Production::    SENTENCE : VAR_ASSIGN */
-case 30:
+case 29:
     /*! Production::    SENTENCE : CONDITION */
-case 31:
+case 30:
     /*! Production::    SENTENCE : FUNCTION */
-case 32:
+case 31:
     /*! Production::    SENTENCE : ECHO */
-case 33:
+case 32:
     /*! Production::    SENTENCE : DEFCLASS */
-case 39:
+case 38:
     /*! Production::    PRIVACITY : PUBLIC */
-case 40:
+case 39:
     /*! Production::    PRIVACITY : PRIVATE */
-case 41:
+case 40:
     /*! Production::    PRIVACITY : PROTECTED */
+case 41:
+    /*! Production::    ARGUMENTS : ARGUMENTS_repetition */
 case 42:
     /*! Production::    CONDITION_STMT : e */
 
@@ -1147,25 +1152,25 @@ case 42:
     // END of default action (generated by JISON mode classic/merge :: 1,VT,VA,-,-,-,-,-,-)
     break;
 
-case 34:
+case 33:
     /*! Production::    SENTENCE : COMMENT */
 
     this.$ = ``
     break;
 
-case 35:
+case 34:
     /*! Production::    ECHO : PRINTLN ECHO_option e ECHO_option2 */
 
     this.$ = `echo ${ yyvstack[yysp - 1] } . PHP_EOL;`
     break;
 
-case 36:
+case 35:
     /*! Production::    ECHO : PRINT ECHO_option3 e ECHO_option4 */
 
     this.$ = `echo ${ yyvstack[yysp - 1] };`
     break;
 
-case 37:
+case 36:
     /*! Production::    DEFCLASS : CLASS ID name_extended sentence END */
 
     if (yyvstack[yysp - 2]) {
@@ -1175,7 +1180,7 @@ case 37:
     }
     break;
 
-case 38:
+case 37:
     /*! Production::    VAR_ASSIGN : ID ASSIGN e */
 
     this.$ = '$' + yyvstack[yysp - 2] + '=' + yyvstack[yysp] + ';'
@@ -1195,13 +1200,15 @@ case 44:
 
 case 45:
     /*! Production::    expressions_repetition : %epsilon */
-case 51:
+case 53:
     /*! Production::    FUNCTION_repetition : %epsilon */
-case 63:
-    /*! Production::    sentence : %epsilon */
 case 65:
-    /*! Production::    CONDITION_repetition : %epsilon */
+    /*! Production::    sentence : %epsilon */
 case 67:
+    /*! Production::    ARGUMENTS_repetition : %epsilon */
+case 69:
+    /*! Production::    CONDITION_repetition : %epsilon */
+case 71:
     /*! Production::    CONDITION_repetition2 : %epsilon */
 
     this.$ = [];
@@ -1209,40 +1216,46 @@ case 67:
 
 case 46:
     /*! Production::    expressions_repetition : expressions_repetition SENTENCE */
-case 52:
+case 54:
     /*! Production::    FUNCTION_repetition : FUNCTION_repetition SENTENCE */
-case 64:
-    /*! Production::    sentence : sentence SENTENCE */
 case 66:
-    /*! Production::    CONDITION_repetition : CONDITION_repetition SENTENCE */
+    /*! Production::    sentence : sentence SENTENCE */
 case 68:
+    /*! Production::    ARGUMENTS_repetition : ARGUMENTS_repetition ID */
+case 70:
+    /*! Production::    CONDITION_repetition : CONDITION_repetition SENTENCE */
+case 72:
     /*! Production::    CONDITION_repetition2 : CONDITION_repetition2 SENTENCE */
 
     yyvstack[yysp - 1].push(yyvstack[yysp]);
     this.$ = yyvstack[yysp - 1];
     break;
 
-case 47:
-    /*! Production::    FUNCTION_option : %epsilon */
 case 49:
+    /*! Production::    FUNCTION_option : %epsilon */
+case 51:
     /*! Production::    FUNCTION_option2 : %epsilon */
-case 53:
-    /*! Production::    ECHO_option : %epsilon */
 case 55:
-    /*! Production::    ECHO_option2 : %epsilon */
+    /*! Production::    ECHO_option : %epsilon */
 case 57:
-    /*! Production::    ECHO_option3 : %epsilon */
+    /*! Production::    ECHO_option2 : %epsilon */
 case 59:
-    /*! Production::    ECHO_option4 : %epsilon */
+    /*! Production::    ECHO_option3 : %epsilon */
 case 61:
+    /*! Production::    ECHO_option4 : %epsilon */
+case 63:
     /*! Production::    name_extended : %epsilon */
 
     this.$ = undefined;
     break;
 
-case 50:
-    /*! Production::    FUNCTION_option2 : PAR_OPEN PAR_CLOSE */
-case 62:
+case 52:
+    /*! Production::    FUNCTION_option2 : PAR_OPEN ARGUMENTS PAR_CLOSE */
+
+    this.$ = [yyvstack[yysp - 2], yyvstack[yysp - 1], yyvstack[yysp]];
+    break;
+
+case 64:
     /*! Production::    name_extended : COLON ID */
 
     this.$ = [yyvstack[yysp - 1], yyvstack[yysp]];
@@ -1258,31 +1271,31 @@ table: bt({
   s,
   [0, 8],
   1,
-  13,
+  14,
   1,
   12,
   12,
   1,
   s,
   [0, 4],
-  11,
   12,
+  13,
   1,
   28,
   s,
-  [11, 3],
+  [12, 3],
   c,
-  [24, 8],
-  11,
+  [25, 9],
+  12,
   0,
-  11,
+  12,
   0,
   13,
   28,
   1,
   19,
   s,
-  [11, 15],
+  [12, 15],
   0,
   29,
   29,
@@ -1299,114 +1312,130 @@ table: bt({
   [29, 12],
   c,
   [52, 3],
-  c,
-  [72, 5],
+  2,
+  s,
+  [0, 4],
   19,
   0,
   19,
+  19,
   c,
-  [94, 8]
+  [10, 6],
+  s,
+  [0, 4]
 ]),
   symbol: u([
   42,
-  52,
+  53,
   1,
   1,
-  28,
-  29,
+  26,
+  27,
   s,
-  [31, 4, 1],
+  [29, 4, 1],
   s,
-  [36, 4, 1],
+  [34, 4, 1],
   s,
   [44, 6, 1],
-  51,
-  53,
-  35,
+  52,
+  55,
+  33,
   4,
   10,
   12,
   13,
   s,
-  [23, 6, 1],
+  [23, 4, 1],
+  38,
+  39,
   40,
   43,
-  50,
-  29,
+  51,
+  54,
+  27,
   c,
-  [14, 11],
-  56,
+  [15, 11],
+  58,
   c,
   [12, 11],
-  58,
-  28,
+  60,
+  26,
   c,
-  [13, 10],
-  43,
+  [13, 8],
   c,
-  [11, 11],
-  50,
-  63,
+  [39, 3],
+  54,
+  c,
+  [12, 11],
+  51,
+  54,
+  66,
   s,
   [3, 7, 1],
   11,
   s,
   [14, 9, 1],
   s,
-  [28, 7, 1],
+  [26, 7, 1],
   c,
-  [100, 4],
+  [103, 4],
   c,
-  [52, 22],
+  [54, 23],
   c,
-  [11, 11],
+  [12, 13],
   c,
-  [86, 23],
+  [91, 24],
+  54,
   c,
-  [67, 11],
+  [72, 11],
   41,
-  60,
+  62,
   1,
   c,
-  [98, 16],
+  [103, 16],
   c,
   [30, 11],
   c,
-  [109, 12],
+  [114, 12],
   c,
-  [209, 8],
+  [217, 8],
   c,
-  [117, 33],
+  [122, 36],
   c,
-  [11, 132],
+  [12, 144],
   c,
-  [213, 17],
+  [228, 17],
   c,
-  [202, 12],
+  [217, 12],
   c,
   [29, 29],
   c,
   [28, 28],
-  40,
-  54,
+  38,
+  56,
   c,
   [59, 29],
-  57,
+  59,
   c,
   [30, 29],
-  59,
   61,
-  28,
-  62,
+  63,
+  26,
+  65,
   c,
   [151, 58],
   c,
   [29, 348],
-  55,
+  57,
+  50,
+  64,
   c,
-  [743, 20],
+  [759, 19],
   c,
-  [19, 38]
+  [19, 38],
+  22,
+  22,
+  26
 ]),
   type: u([
   0,
@@ -1419,25 +1448,29 @@ table: bt({
   s,
   [2, 12],
   c,
-  [14, 15],
+  [15, 16],
   c,
-  [12, 34],
+  [12, 24],
   c,
-  [64, 15],
+  [13, 11],
+  c,
+  [67, 16],
   s,
   [2, 26],
   c,
-  [52, 12],
+  [54, 14],
   c,
-  [86, 34],
+  [12, 22],
   c,
-  [134, 24],
+  [25, 26],
   c,
-  [99, 30],
+  [129, 13],
   c,
-  [209, 17],
+  [104, 31],
   c,
-  [11, 165],
+  [217, 16],
+  c,
+  [12, 180],
   s,
   [2, 77],
   c,
@@ -1446,15 +1479,15 @@ table: bt({
   [30, 31],
   0,
   c,
-  [151, 89],
+  [379, 42],
   s,
-  [2, 319],
+  [2, 366],
   c,
-  [932, 15],
+  [890, 14],
   c,
-  [952, 17],
+  [976, 19],
   c,
-  [19, 27]
+  [19, 30]
 ]),
   state: u([
   1,
@@ -1469,36 +1502,74 @@ table: bt({
   13,
   24,
   23,
-  36,
-  38,
-  41,
-  24,
+  28,
+  37,
+  39,
   42,
+  28,
+  24,
   43,
-  60,
+  28,
+  44,
   61,
+  28,
   62,
-  64,
+  28,
+  63,
+  28,
   65,
+  28,
   66,
+  28,
+  67,
   7,
-  70,
+  71,
   c,
-  [22, 6],
+  [30, 6],
+  72,
+  28,
+  73,
+  28,
+  74,
+  28,
+  75,
+  28,
+  76,
+  28,
+  77,
+  28,
+  78,
+  28,
+  79,
+  28,
+  80,
+  28,
+  81,
+  28,
+  82,
+  28,
+  83,
+  28,
+  84,
+  28,
+  85,
+  28,
+  86,
+  28,
   s,
-  [71, 15, 1],
-  s,
-  [87, 5, 2],
-  96,
-  7,
+  [88, 5, 2],
+  97,
+  98,
   99,
-  c,
-  [29, 6],
   7,
   101,
   c,
-  [8, 7],
+  [46, 6],
+  7,
   103,
+  c,
+  [8, 7],
+  105,
   c,
   [8, 6]
 ]),
@@ -1509,9 +1580,11 @@ table: bt({
   s,
   [1, 21],
   s,
-  [2, 10],
+  [2, 8],
   c,
-  [11, 12],
+  [9, 9],
+  c,
+  [11, 5],
   s,
   [1, 37],
   s,
@@ -1531,7 +1604,7 @@ table: bt({
   c,
   [262, 14],
   c,
-  [330, 13],
+  [332, 13],
   s,
   [2, 18],
   c,
@@ -1563,16 +1636,16 @@ table: bt({
   c,
   [22, 5],
   c,
-  [435, 21],
+  [435, 20],
   c,
-  [438, 11],
+  [437, 11],
   c,
-  [11, 21]
+  [11, 24]
 ]),
   goto: u([
   3,
   11,
-  47,
+  49,
   10,
   14,
   15,
@@ -1584,56 +1657,64 @@ table: bt({
   21,
   26,
   27,
-  32,
+  31,
   25,
-  s,
-  [28, 4, 1],
+  29,
+  30,
+  32,
   33,
-  34,
   22,
+  34,
   35,
+  36,
   s,
-  [53, 10],
-  37,
+  [55, 8],
+  38,
+  55,
+  55,
   s,
-  [57, 10],
-  39,
+  [59, 8],
   40,
+  59,
+  59,
+  41,
   c,
-  [35, 10],
+  [35, 8],
+  34,
+  35,
   c,
   [10, 10],
-  44,
+  45,
   s,
-  [50, 5, 1],
+  [51, 5, 1],
+  58,
+  60,
+  s,
+  [46, 5, 1],
+  56,
   57,
   59,
-  s,
-  [45, 5, 1],
-  55,
-  56,
-  58,
   s,
   [42, 12],
   c,
   [48, 20],
   c,
   [10, 10],
-  63,
+  64,
   c,
   [21, 20],
   s,
-  [61, 11],
-  67,
-  38,
+  [63, 11],
+  68,
+  37,
   c,
   [92, 16],
   s,
-  [38, 11],
-  68,
-  11,
-  47,
+  [37, 11],
   69,
+  11,
+  49,
+  70,
   c,
   [187, 8],
   c,
@@ -1646,33 +1727,33 @@ table: bt({
   [190, 5],
   3,
   3,
-  58,
+  59,
   s,
   [3, 12],
   s,
   [17, 16],
-  58,
+  59,
   s,
   [17, 12],
   c,
   [247, 16],
-  86,
+  87,
   s,
-  [49, 11],
-  88,
-  55,
+  [51, 11],
+  89,
+  57,
   c,
   [30, 16],
-  90,
+  91,
   s,
-  [55, 11],
-  59,
+  [57, 11],
+  61,
   c,
   [29, 16],
-  92,
+  93,
   s,
-  [59, 11],
-  94,
+  [61, 11],
+  95,
   s,
   [2, 3],
   c,
@@ -1688,7 +1769,7 @@ table: bt({
   [29, 3],
   4,
   4,
-  58,
+  59,
   s,
   [4, 12],
   s,
@@ -1697,22 +1778,22 @@ table: bt({
   [29, 3],
   5,
   5,
-  58,
+  59,
   s,
   [5, 12],
   s,
   [6, 16],
-  58,
+  59,
   s,
   [6, 12],
   s,
   [7, 16],
-  58,
+  59,
   s,
   [7, 12],
   s,
   [8, 16],
-  58,
+  59,
   s,
   [8, 12],
   s,
@@ -1748,7 +1829,7 @@ table: bt({
   [29, 5],
   12,
   12,
-  58,
+  59,
   s,
   [12, 12],
   s,
@@ -1757,7 +1838,7 @@ table: bt({
   [29, 5],
   13,
   13,
-  58,
+  59,
   s,
   [13, 12],
   s,
@@ -1766,7 +1847,7 @@ table: bt({
   [29, 5],
   14,
   14,
-  58,
+  59,
   s,
   [14, 12],
   s,
@@ -1775,33 +1856,35 @@ table: bt({
   [29, 5],
   15,
   15,
-  58,
+  59,
   s,
   [15, 12],
   s,
   [16, 5],
-  53,
   54,
+  55,
   16,
   16,
   c,
   [145, 8],
   s,
   [16, 12],
-  97,
   11,
-  47,
-  98,
-  c,
-  [714, 8],
-  11,
-  47,
+  49,
   100,
   c,
-  [11, 10],
+  [713, 8],
+  11,
+  49,
   102,
   c,
-  [11, 8]
+  [11, 10],
+  104,
+  c,
+  [11, 8],
+  106,
+  41,
+  107
 ])
 }),
 defaultActions: bda({
@@ -1813,58 +1896,59 @@ defaultActions: bda({
   [17, 4, 1],
   23,
   s,
-  [28, 7, 1],
-  37,
-  39,
-  59,
-  66,
-  68,
+  [28, 8, 1],
+  38,
+  40,
+  60,
+  67,
   69,
   70,
-  85,
-  86,
-  87,
+  71,
   s,
-  [89, 4, 1],
-  94,
+  [86, 8, 1],
+  95,
   s,
-  [97, 7, 1]
+  [100, 8, 1]
 ]),
   goto: u([
   45,
   1,
   46,
   s,
-  [29, 6, 1],
-  48,
+  [28, 6, 1],
+  50,
+  38,
   39,
   40,
-  41,
-  67,
+  71,
   s,
-  [21, 7, 1],
-  54,
-  58,
+  [21, 6, 1],
+  47,
+  48,
+  56,
+  60,
   20,
-  63,
   65,
+  69,
   44,
-  68,
+  72,
   18,
   19,
-  51,
+  53,
+  67,
+  34,
+  58,
   35,
-  56,
-  36,
-  60,
   62,
-  50,
-  37,
   64,
-  43,
+  36,
   66,
-  28,
-  52
+  43,
+  70,
+  27,
+  54,
+  52,
+  68
 ])
 }),
 parseError: function parseError(str, hash, ExceptionClass) {
@@ -1904,7 +1988,7 @@ parse: function parse(input) {
     var TERROR = this.TERROR;
     var EOF = this.EOF;
     var ERROR_RECOVERY_TOKEN_DISCARD_COUNT = (this.options.errorRecoveryTokenDiscardCount | 0) || 3;
-    var NO_ACTION = [0, 104 /* === table.length :: ensures that anyone using this new state will fail dramatically! */];
+    var NO_ACTION = [0, 108 /* === table.length :: ensures that anyone using this new state will fail dramatically! */];
 
     var lexer;
     if (this.__lexer__) {
@@ -4225,23 +4309,23 @@ EOF: 1,
     simpleCaseActionClusters: {
       /*! Conditions:: INITIAL */
       /*! Rule::       \/\*[\s\S]*?\*\/|\/\/.* */
-      1: 31,
+      1: 29,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       [0-9]+(\.[0-9]+)?\b */
-      2: 25,
+      2: 23,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       true */
-      3: 23,
+      3: 39,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       false */
-      4: 24,
+      4: 40,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       class */
-      5: 34,
+      5: 32,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       : */
@@ -4265,11 +4349,11 @@ EOF: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       def */
-      11: 29,
+      11: 27,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       end */
-      12: 30,
+      12: 28,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       not */
@@ -4293,31 +4377,31 @@ EOF: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       public */
-      18: 36,
+      18: 34,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       private */
-      19: 37,
+      19: 35,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       protected */
-      20: 38,
+      20: 36,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       println */
-      21: 32,
+      21: 30,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       print */
-      22: 33,
+      22: 31,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       if */
-      23: 39,
+      23: 37,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       [a-zA-Z_][a-zA-Z0-9_]* */
-      24: 28,
+      24: 26,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       % */
@@ -4325,7 +4409,7 @@ EOF: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       = */
-      26: 35,
+      26: 33,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       == */
@@ -4373,7 +4457,7 @@ EOF: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \( */
-      38: 40,
+      38: 38,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \) */
@@ -4381,7 +4465,7 @@ EOF: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       PI */
-      40: 27,
+      40: 25,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       E */
@@ -4397,7 +4481,7 @@ EOF: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       "(?:""|[^"])*" */
-      44: 26,
+      44: 24,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       $ */
@@ -4521,7 +4605,7 @@ EOF: 1,
 }();
 parser.lexer = lexer;
 
-const utils = require('./util');
+const trans = require('./transpile');
 
 function Parser() {
   this.yy = {};

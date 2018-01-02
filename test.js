@@ -3,27 +3,26 @@ function exec (input) {
 }
 
 var twenty = exec(`
-abc = false
+abc = 5^7
+hello = false and true
 if abc and xyx or aa == 3
     print "This is " . abc
 end
 
 // This a comment
-def hello
-    abc = "Hello"
-    println abc
-
-    // evaluate abc var
-    if abc
-        print "Este es abc"
+def hello(name lastname)
+    // evaluate name var
+    print "Your name:" . name
+    if lastname
+        print "Yout lastname:" . lastname
     end
 end
 
 /*
 * Another longer comment
 */
-def goobbye
-    abc = "Bye"
+def goobbye(name)
+    abc = "Hello " . name
     print abc
 end
 

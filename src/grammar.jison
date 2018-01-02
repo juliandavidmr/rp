@@ -1,7 +1,7 @@
 /* rp:  rp is a php compiler */
 
 %{
-	const utils = require('./util')
+	const trans = require('./transpile')
 %}
 
 /* lexical grammar */
@@ -45,7 +45,6 @@
 
 /* Objects */
 [a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
-/* \((\s*\w+\s*,*)*\)       return 'ARGS' */
 "%"                   return '%'
 "="                   return 'ASSIGN'
 "=="                  return 'EQUAL'
@@ -82,7 +81,7 @@
 %left '^'
 %left '>' '<' '>=' '<='
 %left 'NOT'
-%left 'AND' 'OR' 
+%left 'AND' 'OR'
 %left '=' '<>' EQUAL IDENTICAL
 %left UMINUS
 %left IF
@@ -101,11 +100,7 @@ expressions
 e
 	: e '+' e
 		{
-			if (! isNaN($1) && ! isNaN($2)) {
-				$$ = $1 + $3;
-			} else {
-				$$ = $1 + '+' + $3;
-			}
+			$$ = trans.operation($1, $3, '+');			
 		}
 	| 'NOT' e
 		{
@@ -116,79 +111,98 @@ e
 			}
 		}
 	| e 'OR' e
-		{$$ = $1 + '||' + $3;}
+		{ $$ = $1 + '||' + $3;}
 	| e AND e
 		{
-			if (utils.isOperable($1, $2)) {
-				console.log("Operable")
-				$$ = $1 && $3;
-			} else {
-				$$ = $1 + '&&' + $3;
-			}		
+			$$ = trans.operation($1, $3, '&&');			
 		}
 	| e EQUAL e
 		{
-			if (utils.isOperable($1, $2)) {
-				$$ = $1 == $3;
-			} else {
-				$$ = $1 + '==' + $3;
-			}
+			$$ = trans.operation($1, $3, '==');
 		}
 	| e IDENTICAL e
 		{
-			$$ = $1 + '===' + $3;
+			$$ = trans.operation($1, $3, '===');
 		}
 	| e '<>' e
-		{$$ = $1 != $3;}
+		{
+			$$ = trans.operation($1, $3, '!=');
+		}
 	| e '-' e
-		{$$ = $1-$3;}
+		{
+			$$ = trans.operation($1, $3, '-');
+		}
 	| e '*' e
-		{$$ = $1*$3;}
+		{			
+			$$ = trans.operation($1, $3, '*');
+		}
 	| e '/' e
-		{$$ = $1/$3;}
+		{
+			$$ = trans.operation($1, $3, '/');
+		}
 	| e '>' e
-		{$$ = $1>$3;}
+		{			
+			$$ = trans.operation($1, $3, '>');
+		}
 	| e '<' e
-		{$$ = $1<$3;}
+		{
+			$$ = trans.operation($1, $3, '<');
+		}
 	| e '>=' e
-		{$$ = $1>=$3;}
+		{
+			$$ = trans.operation($1, $3, '>=');
+		}
 	| e '<=' e
-		{$$ = $1<=$3;}
+		{
+			$$ = trans.operation($1, $3, '<=');
+		}
 	| e '^' e
-		{$$ = Math.pow($1, $3);}
+		{
+			if (trans.isOperable($1, $3)) {
+				$$ = Math.pow($1, $3);
+			} else {
+				$$ = $1 + '^' + $3;
+			}
+		}
 	| '-' e %prec UMINUS
-		{$$ = -$2;}
+		{
+			$$ = -$2;
+		}
 	| e DOT e
-		{$$ = $1 + ' . ' + $3;}
+		{ $$ = $1 + ' . ' + $3;}
 	| '(' e PAR_CLOSE
-		{$$ = $e;}    
+		{ $$ = $e;}
 	| e '%'
-		{$$ = $1 / 100;}
-	| TRUE
-		{$$ = true;}
-	| FALSE
-		{$$ = false;}
+		{			
+			if (trans.isOperable($1, 0)) {
+				$$ = $1 / 100;
+			} else {
+				$$ = `(${$1}/100)`;
+			}
+		}
+	| (TRUE | FALSE)
+		{ $$ = `${ $1 }`;}
 	| NUMBER
-		{$$ = Number(yytext);}
+		{ $$ = Number(yytext);}
 	| STRING
-		{$$ = $1;}
+		{ $$ = $1;}
 	| E
-		{$$ = Math.E;}
+		{ $$ = Math.E;}
 	| PI
-		{$$ = Math.PI;}
+		{ $$ = Math.PI;}
 	| ID
-		{$$ = '$' + $ID;}
+		{ $$ = '$' + $ID;}
 ;
 
 FUNCTION
-	: PRIVACITY? DEF ID (PAR_OPEN PAR_CLOSE)?
+	: PRIVACITY? DEF ID (PAR_OPEN ARGUMENTS PAR_CLOSE)?
 			SENTENCE*
 		END
 			{
 				if ($1) {
-					$$ = `${ $1 } function ${ $3 }(){ ${ $5 } }`;
+					$$ = `${ $1 } function ${ $3 }(${ trans.arguments($4) }){ ${ $5 } }`;
 				} else {
-					$$ = `function ${ $3 }(){ ${ $5 } }`;
+					$$ = `function ${ $3 }(${ trans.arguments($4) }){ ${ $5 } }`;
 				}
 			}
 ;
@@ -198,7 +212,7 @@ SENTENCE
 	| CONDITION    
 	| FUNCTION
 	| ECHO
-	| DEFCLASS    
+	| DEFCLASS
 	| COMMENT
 			{ $$ = `` }
 ;
@@ -232,6 +246,10 @@ PRIVACITY
     : PUBLIC
     | PRIVATE
     | PROTECTED
+;
+
+ARGUMENTS
+	: ID*
 ;
 
 /* if */

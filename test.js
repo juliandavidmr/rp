@@ -1,10 +1,10 @@
 function exec (input) {
-    return require("./grammar").parse(input);
+    return require("./").parse(input);
 }
 
 var twenty = exec(`
 abc = false
-if abc
+if abc and xyx or aa == 3
     print "This is " . abc
 end
 

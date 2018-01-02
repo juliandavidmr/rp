@@ -2,12 +2,13 @@
   "name": "jison",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/grammar.js",
   "scripts": {
-    "build": "jison grammar.jison",
+    "build": "cd src && jison grammar.jison",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }

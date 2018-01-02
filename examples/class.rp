@@ -2,7 +2,7 @@ class Person
 
     private name;
 
-    construct()
+    def construct()
         static abc = 0;        
     end
     

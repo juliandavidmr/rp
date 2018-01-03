@@ -43,6 +43,9 @@
 /* conditons */
 "if"                  return 'IF'
 
+/* snippets */
+"typeof"							return "TYPEOF"
+
 /* Objects */
 [a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
 "%"                   return '%'
@@ -58,13 +61,15 @@
 ">="                  return '>='
 "<="                  return '<='
 "^"                   return '^'
-"("                   return 'PAR_OPEN'
-")"                   return 'PAR_CLOSE'
+"("                 	return 'PAR_OPEN'
+"\("                 	return 'PAR_OPEN'
+")"                 	return 'PAR_CLOSE'
 "PI"                  return 'PI'
 "E"                   return 'E'
 ";"                   return 'SEMICOL'
 '.'                   return 'DOT'
 \"(?:\"\"|[^"])*\"    return 'STRING'
+
 <<EOF>>               return 'EOF'
 .                     return 'INVALID'
 
@@ -87,6 +92,7 @@
 %left IF
 %left DOT
 %left COLON
+%left TYPEOF
 
 %start expressions
 
@@ -98,7 +104,9 @@ expressions
 ;
 
 e
-	: e '+' e
+	: ID
+		{ $$ = '$' + $ID;}	
+	| e '+' e
 		{
 			$$ = trans.operation($1, $3, '+');			
 		}
@@ -173,7 +181,7 @@ e
 	| '(' e PAR_CLOSE
 		{ $$ = $e;}
 	| e '%'
-		{			
+		{
 			if (trans.isOperable($1, 0)) {
 				$$ = $1 / 100;
 			} else {
@@ -190,8 +198,7 @@ e
 		{ $$ = Math.E;}
 	| PI
 		{ $$ = Math.PI;}
-	| ID
-		{ $$ = '$' + $ID;}
+	| SNIPPETS
 ;
 
 FUNCTION
@@ -209,9 +216,10 @@ FUNCTION
 
 SENTENCE
 	: VAR_ASSIGN
-	| CONDITION    
+	| CONDITION
 	| FUNCTION
 	| ECHO
+	| SNIPPETS
 	| DEFCLASS
 	| COMMENT
 			{ $$ = `` }
@@ -255,7 +263,8 @@ ARGUMENTS
 /* if */
 
 CONDITION_STMT
-	: e
+	: SNIPPETS
+	| e
 ;
 
 CONDITION
@@ -267,4 +276,16 @@ CONDITION
         SENTENCE*
       END
         { $$ = `if(${ $2 }) { ${ $3 } }` }
+;
+
+/* snippets code */
+SNIPPETS
+	: GETTYPE
+;
+
+GETTYPE
+	: TYPEOF ID
+		{ $$ = 'gettype($' + $ID + ')' }
+	|	TYPEOF (NUMBER|STRING|TRUE|FALSE)
+		{ $$ = `gettype(${ $2 })` }
 ;

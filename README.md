@@ -7,7 +7,9 @@ Based on Ruby, CoffeeScript, Python and other languages.
 - Shorter functions
 - Goodbye to the `;` and `$`, also a lot of unnecessary elements.
 
-## Print message
+## Language Reference
+
+### Print message
 
 ```python
 println "abc"
@@ -21,7 +23,7 @@ echo "abc" . PHP_EOL;
 echo 2*4;
 ```
 
-## Declare variable
+### Declare variable
 
 ```ruby
 abc = 2
@@ -33,7 +35,7 @@ _The equivalent in PHP is:_
 $abc = 2;
 ```
 
-## Functions
+### Functions
 
 If the function has no arguments then the parentheses can be omitted
 
@@ -63,7 +65,7 @@ function goobbye(){
 }
 ```
 
-## Conditions
+### Conditions
 
 ```ruby
 if abc
@@ -79,7 +81,7 @@ if($abc) {
 }
 ```
 
-## Comments
+### Comments
 
 The definition of comments is the same as in php, except comments with the symbol `#`.
 
@@ -91,7 +93,7 @@ The definition of comments is the same as in php, except comments with the symbo
 */
 ```
 
-## Classes
+### Classes
 
 The classes to be inherited are declared after the colon symbol.
 
@@ -126,6 +128,12 @@ class database extends mysqli {
     }
 }
 ```
+
+### Function Calls
+
+|         rp        |                 php               |
+|-------------------|-----------------------------------|
+| `typeof value`    | `gettype($value)`                 |
 
 ## TODO
 

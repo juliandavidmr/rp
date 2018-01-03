@@ -38,10 +38,8 @@ function operation(a, b, op) {
  */
 function _arguments(args) {
 	if (Array.isArray(args)) {
-		if (util.containsArray(args)) {
-			args = args[1]
-		}
-		args = args.map(i => `$${i}`)
+		if (util.containsArray(args)) args = args[1];		
+		args = args.map(i => `$${i}`);
 		return args.join(',')
 	}
 	return ''

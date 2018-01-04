@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "GPL v2",
+  "license": "GPL v3",
   "dependencies": {},
   "devDependencies": {
     "jasmine": "^2.8.0"

@@ -2,10 +2,16 @@
 
 (in progress) rp is a php transpiler, it allows you to write a more clean and comfortable new syntax.
 
-Based on Ruby, CoffeeScript, Python and other languages.
+Syntax based on ruby, coffescript and python.
 
 - Shorter functions
 - Goodbye to the `;` and `$`, also a lot of unnecessary elements.
+
+## Resources
+
+- [Language Reference](#language-reference)
+- [Development](#development)
+- [Test](#test)
 
 ## Language Reference
 
@@ -134,6 +140,38 @@ class database extends mysqli {
 |         rp        |                 php               |
 |-------------------|-----------------------------------|
 | `typeof value`    | `gettype($value)`                 |
+
+## Development
+
+You can test the rp locally with these steps:
+
+1. Install [jison-gho](https://www.npmjs.com/package/jison-gho) globally.
+
+    ```bash
+    npm install -g jison-gho
+    ```
+
+2. Compile grammar.
+
+    ```bash
+    cd src
+    jison grammar.jison
+
+    # you can also run this command
+    npm run build
+    ```
+
+3. Ready, write your magic.
+
+## Test
+
+Unit tests
+
+```bash
+npm test
+```
+
+_Remember to install the npm packages: `npm install` or `yarn`_
 
 ## TODO
 

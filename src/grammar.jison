@@ -62,7 +62,6 @@
 "<="                  return '<='
 "^"                   return '^'
 "("                 	return 'PAR_OPEN'
-"\("                 	return 'PAR_OPEN'
 ")"                 	return 'PAR_CLOSE'
 "PI"                  return 'PI'
 "E"                   return 'E'
@@ -91,7 +90,6 @@
 %left UMINUS
 %left IF
 %left DOT
-%left COLON
 %left TYPEOF
 
 %start expressions
@@ -178,7 +176,7 @@ e
 		}
 	| e DOT e
 		{ $$ = $1 + ' . ' + $3;}
-	| '(' e PAR_CLOSE
+	| PAR_OPEN e PAR_CLOSE
 		{ $$ = $e;}
 	| e '%'
 		{
@@ -188,7 +186,7 @@ e
 				$$ = `(${$1}/100)`;
 			}
 		}
-	| (TRUE | FALSE)
+	| BOOLEAN
 		{ $$ = `${ $1 }`;}
 	| NUMBER
 		{ $$ = Number(yytext);}
@@ -199,6 +197,11 @@ e
 	| PI
 		{ $$ = Math.PI;}
 	| SNIPPETS
+;
+
+BOOLEAN:
+	TRUE
+	| FALSE
 ;
 
 FUNCTION
@@ -226,9 +229,9 @@ SENTENCE
 ;
 
 ECHO
-	: PRINTLN PAR_OPEN? e PAR_CLOSE?
+	: PRINTLN e
 			{ $$ = `echo ${ $e } . PHP_EOL;` }
-	| PRINT PAR_OPEN? e PAR_CLOSE?
+	| PRINT e
 			{ $$ = `echo ${ $e };` }
 ;
 
@@ -263,22 +266,18 @@ ARGUMENTS
 /* if */
 
 CONDITION_STMT
-	: SNIPPETS
-	| e
+	: e
 ;
 
 CONDITION
-    : IF PAR_OPEN CONDITION_STMT PAR_CLOSE
+    : IF CONDITION_STMT
         SENTENCE*
       END
-        { $$ = `if(${$3}) { ${ $5 } }` }
-		| IF CONDITION_STMT
-        SENTENCE*
-      END
-        { $$ = `if(${ $2 }) { ${ $3 } }` }
+        { $$ = `if(${ $2 }) { ${ $3 } }` }	
 ;
 
 /* snippets code */
+
 SNIPPETS
 	: GETTYPE
 ;
@@ -286,6 +285,6 @@ SNIPPETS
 GETTYPE
 	: TYPEOF ID
 		{ $$ = 'gettype($' + $ID + ')' }
-	|	TYPEOF (NUMBER|STRING|TRUE|FALSE)
+	| TYPEOF (NUMBER|STRING|TRUE|FALSE)
 		{ $$ = `gettype(${ $2 })` }
 ;

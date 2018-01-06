@@ -4,7 +4,9 @@ function exec (input) {
 
 var twenty = exec(`
 if (typeof value == "string") print "String" end
+
 abc = 5^7
+
 hello = false and true
 if abc and xyx or aa == 3
     print "This is " . abc

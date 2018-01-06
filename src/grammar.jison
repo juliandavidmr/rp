@@ -2,6 +2,7 @@
 
 %{
 	const trans = require('./transpile')
+	const snippets = require('./snippets')	
 %}
 
 /* lexical grammar */
@@ -61,11 +62,12 @@
 ">="                  return '>='
 "<="                  return '<='
 "^"                   return '^'
-"("                 	return 'PAR_OPEN'
-")"                 	return 'PAR_CLOSE'
+"("                   return 'PAR_OPEN'
+")"                   return 'PAR_CLOSE'
 "PI"                  return 'PI'
 "E"                   return 'E'
 ";"                   return 'SEMICOL'
+'..'                  return 'DOT2'
 '.'                   return 'DOT'
 \"(?:\"\"|[^"])*\"    return 'STRING'
 
@@ -90,6 +92,7 @@
 %left UMINUS
 %left IF
 %left DOT
+%left DOT2
 %left TYPEOF
 
 %start expressions
@@ -280,11 +283,17 @@ CONDITION
 
 SNIPPETS
 	: GETTYPE
+	| RANGE
 ;
 
 GETTYPE
 	: TYPEOF ID
-		{ $$ = 'gettype($' + $ID + ')' }
+		{ $$ = snippets.getType('$' + $ID) }
 	| TYPEOF (NUMBER|STRING|TRUE|FALSE)
-		{ $$ = `gettype(${ $2 })` }
+		{ $$ = snippets.getType($2) }
+;
+
+RANGE
+	: NUMBER[a] DOT2 NUMBER[b]
+		{ $$ = snippets.range($a, $b) }
 ;

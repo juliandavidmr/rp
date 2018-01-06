@@ -135,11 +135,12 @@ class database extends mysqli {
 }
 ```
 
-### Function Calls
+### Function Calls & Snippets code
 
-|         rp        |                 php               |
-|-------------------|-----------------------------------|
-| `typeof value`    | `gettype($value)`                 |
+|   Description                         |      **rp**       |                 php               |
+|---------------------------------------|-------------------|-----------------------------------|
+| get the type of data                  | `typeof value`    | `gettype($value)`                 |
+| returns a number vector from a range  | `1..6`            | `array(1,2,3,4,5,6)`              |
 
 ## Development
 

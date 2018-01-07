@@ -17,6 +17,8 @@
 
 /* reserved words */
 "class"                 return 'CLASS'
+"as"                    return 'AS'
+"each"                  return 'EACH'
 "for"                   return 'FOR'
 "in"                    return 'IN'
 ":"                     return 'COLON'
@@ -50,7 +52,6 @@
 "typeof"    		  return "TYPEOF"
 
 /*  */
-[a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
 "%"                   return '%'
 "="                   return 'ASSIGN'
 "=="                  return 'EQUAL'
@@ -71,6 +72,7 @@
 ";"                   return 'SEMICOL'
 '..'                  return 'DOT2'
 '.'                   return 'DOT'
+[a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
 \"(?:\"\"|[^"])*\"    return 'STRING'
 
 <<EOF>>               return 'EOF'
@@ -287,6 +289,10 @@ LOOP
 		SENTENCE*[sentence]
 	  END
 		{ $$ = seg.loop1($to, $sentence); }
+	| EACH ID[a] AS ID[b]
+		SENTENCE*[sentence]
+	  END
+		{ $$ = seg.each($a, $b, $sentence); }
 ;
 
 /* snippets code */

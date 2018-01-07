@@ -31,5 +31,8 @@ module.exports = {
                 ${content}
             }
         `;
+    },
+    each: function (a, b, content) {
+        return `foreach ($${a} as $${b}) { ${content} } `
     }
 }

@@ -161,6 +161,22 @@ for ($rhwqd = 0; $rhwqd <= 10; $rhwqd++) {
 }
 ```
 
+### Each
+
+```rb
+each abc as x
+    print "Hello" . x
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+foreach ($abc as $x) {
+    echo "Hello" . $x;
+}
+```
+
 > Note that the name `$rhwqd` is randomly generated
 
 ### Function Calls & Snippets code

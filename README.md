@@ -10,6 +10,14 @@ Syntax based on ruby, coffescript and python.
 ## Resources
 
 - [Language Reference](#language-reference)
+  - [Print message](#print-message)
+  - [Declare variable](#declare-variable)
+  - [Functions](#functions)
+  - [Conditions](#conditions)
+  - [Comments](#comments)
+  - [Classes](#classes)
+  - [Loops](#loops)
+  - [Function Calls & Snippets code](#function-calls--snippets-code)
 - [Development](#development)
 - [Test](#test)
 

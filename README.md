@@ -135,6 +135,26 @@ class database extends mysqli {
 }
 ```
 
+### Loops
+
+#### Basic loop
+
+```ruby
+for 10
+    print "This is repeated 10 times."
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+for ($rhwqd = 0; $rhwqd <= 10; $rhwqd++) {
+    echo "This is repeated 10 times.";
+}
+```
+
+> Note that the name `$rhwqd` is randomly generated
+
 ### Function Calls & Snippets code
 
 |   Description                         |      **rp**       |                 php               |

@@ -3,6 +3,11 @@ function exec (input) {
 }
 
 var twenty = exec(`
+for 1
+    print "Hello"
+    jelou = "Hello"
+end
+
 if (typeof value == "string") print "String" end
 
 abc = 5^7

@@ -1,3 +1,5 @@
+const u = require('./util')
+
 module.exports = {
     getType: function (e) {
         return `gettype(${e})`;
@@ -17,5 +19,17 @@ module.exports = {
         }
         str = str.endsWith(',') ? str.slice(0, str.length - 1) : str
         return str.concat(')');
+    },
+    loop1: function (to, content) {
+        var name_var = `${u.makeid()}`;
+        return `for ($${name_var} = 0; $${name_var} <= ${to}; $${name_var}++) { ${content} }`;
+    },
+    loop: function (from, to, content) {
+        var name_var = ``;
+        return `
+            for ($x = ${from}; $x <= ${to}; $x++) {
+                ${content}
+            }
+        `;
     }
 }

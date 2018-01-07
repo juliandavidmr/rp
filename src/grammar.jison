@@ -2,7 +2,7 @@
 
 %{
 	const trans = require('./transpile')
-	const snippets = require('./snippets')	
+	const seg = require('./segments')	
 %}
 
 /* lexical grammar */
@@ -17,6 +17,8 @@
 
 /* reserved words */
 "class"                 return 'CLASS'
+"for"                   return 'FOR'
+"in"                    return 'IN'
 ":"                     return 'COLON'
 "#"                     return 'HASH'
 "?"                     return 'QUESTION'
@@ -45,9 +47,9 @@
 "if"                  return 'IF'
 
 /* snippets */
-"typeof"							return "TYPEOF"
+"typeof"    		  return "TYPEOF"
 
-/* Objects */
+/*  */
 [a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
 "%"                   return '%'
 "="                   return 'ASSIGN'
@@ -119,7 +121,7 @@ e
 				$$ = `!${ $2 }`;
 			}
 		}
-	| e 'OR' e
+	| e OR e
 		{ $$ = $1 + '||' + $3;}
 	| e AND e
 		{
@@ -227,6 +229,7 @@ SENTENCE
 	| ECHO
 	| SNIPPETS
 	| DEFCLASS
+	| LOOP
 	| COMMENT
 			{ $$ = `` }
 ;
@@ -279,6 +282,13 @@ CONDITION
         { $$ = `if(${ $2 }) { ${ $3 } }` }	
 ;
 
+LOOP
+	: FOR NUMBER[to]
+		SENTENCE*[sentence]
+	  END
+		{ $$ = seg.loop1($to, $sentence); }
+;
+
 /* snippets code */
 
 SNIPPETS
@@ -288,12 +298,12 @@ SNIPPETS
 
 GETTYPE
 	: TYPEOF ID
-		{ $$ = snippets.getType('$' + $ID) }
+		{ $$ = seg.getType('$' + $ID) }
 	| TYPEOF (NUMBER|STRING|TRUE|FALSE)
-		{ $$ = snippets.getType($2) }
+		{ $$ = seg.getType($2) }
 ;
 
 RANGE
 	: NUMBER[a] DOT2 NUMBER[b]
-		{ $$ = snippets.range($a, $b) }
+		{ $$ = seg.range($a, $b) }
 ;

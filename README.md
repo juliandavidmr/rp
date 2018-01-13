@@ -13,6 +13,8 @@ Syntax based on ruby, coffescript and python.
   - [Print message](#print-message)
   - [Declare variable](#declare-variable)
   - [Functions](#functions)
+    - [Arguments](#arguments)
+  - [Types](#types)
   - [Conditions](#conditions)
   - [Comments](#comments)
   - [Classes](#classes)
@@ -58,11 +60,6 @@ def hello
     abc = "Hello"
     println abc
 end
-
-def goobbye
-    abc = "Bye"
-    print abc
-end
 ```
 
 _The equivalent in PHP is:_
@@ -72,12 +69,34 @@ function hello(){
     $abc = "Hello";
     echo $abc . PHP_EOL;
 }
+```
 
-function goobbye(){
-    $abc = "Bye";
-    echo $abc;
+#### Arguments
+
+```rb
+def hello(msg:string)
+    print "Hello " . msg
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+function hello(string $msg){
+    echo "Hello " . $msg;
 }
 ```
+
+### Types
+
+The types of variables available in __rp__ are identical to php.
+
+|      rp     |       php     |
+|-------------|---------------|
+| integer     | integer       |
+| float       | float         |
+| string      | string        |
+| array       | array         |
 
 ### Conditions
 
@@ -149,21 +168,21 @@ class database extends mysqli {
 
 ```ruby
 for 10
-    print "This is repeated 10 times."
+    println "This is repeated 10 times."
 end
 ```
 
 _The equivalent in PHP is:_
 
 ```php
-for ($rhwqd = 0; $rhwqd <= 10; $rhwqd++) {
-    echo "This is repeated 10 times.";
+for ($__index__ = 0; $__index__ <= 10; $__index__++) {
+    echo "This is repeated 10 times." . PHP_EOL;
 }
 ```
 
 ### Each
 
-```rb
+```t
 each abc as x
     print "Hello" . x
 end
@@ -177,8 +196,6 @@ foreach ($abc as $x) {
 }
 ```
 
-> Note that the name `$rhwqd` is randomly generated
-
 ### Function Calls & Snippets code
 
 |   Description                         |      **rp**       |                 php               |
@@ -190,12 +207,7 @@ foreach ($abc as $x) {
 
 You can test the rp locally with these steps:
 
-1. Install [jison-gho](https://www.npmjs.com/package/jison-gho) globally.
-
-    ```bash
-    npm install -g jison-gho
-    ```
-
+1. Install [jison-gho](https://www.npmjs.com/package/jison-gho) globally. (`npm install -g jison-gho`)
 2. Compile grammar.
 
     ```bash
@@ -220,7 +232,7 @@ _Remember to install the npm packages: `npm install` or `yarn`_
 
 ## TODO
 
-- [ ] Loops
+- [x] Loops
 - [ ] Inheritance of multiple classes
 - [ ] 'implements' function
 - [ ] Special conditions, as well as coffeescript...

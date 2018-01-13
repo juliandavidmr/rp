@@ -1,4 +1,5 @@
 const util = require('./util')
+const is = require('./is')
 
 const SEPARATOR_ARGS = ' ';
 const log = console.log;
@@ -9,10 +10,7 @@ const log = console.log;
  * @param {number?} b 
  */
 function isOperable(a, b) {
-	return !isNaN(a) &&
-		!isNaN(b) &&
-		typeof a === 'number' /*|| typeof a === 'boolean'*/ &&
-		typeof b == typeof b;
+	return (is.number(a) && is.number(b)) || (is.bool(a) && is.bool(b))	
 }
 
 /**
@@ -38,8 +36,8 @@ function operation(a, b, op) {
  */
 function _arguments(args) {
 	if (Array.isArray(args)) {
-		if (util.containsArray(args)) args = args[1];		
-		args = args.map(i => `$${i}`);
+		if (util.containsArray(args)) args = args[1];
+		args = args.filter(f => (typeof f === 'string' && f.toString().trim().length > 0))
 		return args.join(',')
 	}
 	return ''

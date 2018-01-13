@@ -8,7 +8,14 @@ describe("Loop", function () {
             print "Hello"
             jelou = "Hello"
         end
-        `)).toMatch(/for \(\$\w*\s*= 0; \$\w+ <= \d; \$\w+\+\+\)[\s\S]*/);
+        `)).toEqual(`for ($__index__ = 0; $__index__ <= 1; $__index__++) { echo "Hello";,$jelou="Hello"; }`);
+
+        expect(base(`
+        for array1
+            print "Hello"
+            jelou = "Hello"
+        end
+        `)).toEqual(`for ($__index__ = 0; $__index__ <= $array1; $__index__++) { echo "Hello";,$jelou="Hello"; }`);
     });
 
     it("Basic", function () {
@@ -16,6 +23,6 @@ describe("Loop", function () {
         each abc as x
             print "Hello" . x
         end
-        `)).toEqual(`foreach ($abc as $x) { echo "Hello" . $x; } `);
+        `)).toEqual(`foreach ($abc as $x) { echo "Hello" . $x; }`);
     });
 });

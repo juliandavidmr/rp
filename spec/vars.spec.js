@@ -12,4 +12,11 @@ describe("Variable", function () {
 		expect(base('a_bool=false')).toEqual('$a_bool=false;');
 		expect(base('x=1+1+3*6')).toEqual('$x=20;');
 	});
+
+	it("Casting", function () {
+		expect(base('abc to integer')).toEqual('((integer) $abc)');
+		expect(base('abc to string')).toEqual('((string) $abc)');
+		expect(base('(abc to string)')).toEqual('((string) $abc)');
+		expect(base('abc to bool')).toEqual('((bool) $abc)');
+	});	
 });

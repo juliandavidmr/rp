@@ -16,11 +16,13 @@
 "false"                 return 'FALSE'
 
 /* reserved words */
+"return"                return 'RETURN'
 "class"                 return 'CLASS'
 "as"                    return 'AS'
 "each"                  return 'EACH'
 "for"                   return 'FOR'
 "in"                    return 'IN'
+"to"                    return 'TO'
 ":"                     return 'COLON'
 "#"                     return 'HASH'
 "?"                     return 'QUESTION'
@@ -29,6 +31,13 @@
 "def"                   return 'DEF'
 "end"                   return 'END'
 "not"                   return 'NOT'
+
+/* types */
+"string"				return 'TYPE_STRING'
+"integer"				return 'TYPE_NUMBER'
+"array"					return 'TYPE_ARRAY'
+"bool"					return 'TYPE_BOOL'
+"float"					return 'TYPE_FLOAT'
 
 /* Logic operators */
 "and"                   return 'AND'
@@ -64,6 +73,7 @@
 "<"                   return '<'
 ">="                  return '>='
 "<="                  return '<='
+"!="                  return '!='
 "^"                   return '^'
 "("                   return 'PAR_OPEN'
 ")"                   return 'PAR_CLOSE'
@@ -72,7 +82,9 @@
 ";"                   return 'SEMICOL'
 '..'                  return 'DOT2'
 '.'                   return 'DOT'
-[a-zA-Z_][a-zA-Z0-9_]*      return 'ID'
+','					  return 'COMMA'
+[a-zA-Z0-9_]+      	  return 'ID'
+@{ID}      	  		  return 'ATTR'
 \"(?:\"\"|[^"])*\"    return 'STRING'
 
 <<EOF>>               return 'EOF'
@@ -89,23 +101,25 @@
 %left '+' '-'
 %left '*' '/'
 %left '^'
-%left '>' '<' '>=' '<='
+%left '>' '<' '>=' '<=' '<>' EQUAL '!='
 %left 'NOT'
 %left 'AND' 'OR'
-%left '=' '<>' EQUAL IDENTICAL
+%left '=' IDENTICAL
 %left UMINUS
 %left IF
 %left DOT
 %left DOT2
 %left TYPEOF
 
-%start expressions
+%start syntax
 
 %% /* language grammar */
 
-expressions
+syntax
 	: SENTENCE* EOF
 		{ return $1; }
+	| PAR_OPEN SENTENCE* PAR_CLOSE EOF
+		{ return $2; }
 ;
 
 e
@@ -138,6 +152,10 @@ e
 			$$ = trans.operation($1, $3, '===');
 		}
 	| e '<>' e
+		{
+			$$ = trans.operation($1, $3, '!=');
+		}
+	| e '!=' e
 		{
 			$$ = trans.operation($1, $3, '!=');
 		}
@@ -204,24 +222,7 @@ e
 	| PI
 		{ $$ = Math.PI;}
 	| SNIPPETS
-;
-
-BOOLEAN:
-	TRUE
-	| FALSE
-;
-
-FUNCTION
-	: PRIVACITY? DEF ID (PAR_OPEN ARGUMENTS PAR_CLOSE)?
-			SENTENCE*
-		END
-			{
-				if ($1) {
-					$$ = `${ $1 } function ${ $3 }(${ trans.arguments($4) }){ ${ $5 } }`;
-				} else {
-					$$ = `function ${ $3 }(${ trans.arguments($4) }){ ${ $5 } }`;
-				}
-			}
+	| CAST
 ;
 
 SENTENCE
@@ -232,15 +233,45 @@ SENTENCE
 	| SNIPPETS
 	| DEFCLASS
 	| LOOP
+	| CAST
+	| DEF_RETURN
 	| COMMENT
 			{ $$ = `` }
 ;
 
+BOOLEAN:
+	TRUE
+	| FALSE
+;
+
+FUNCTION
+	: PRIVACITY? DEF ID[name] (PAR_OPEN DEF_ARGUMENT* PAR_CLOSE)?[args]
+			SENTENCE*
+		END
+			{
+				if ($1) {
+					$$ = `${ $1 } function ${ $name }(${ trans.arguments($args) }){ ${ $5 } }`;
+				} else {
+					$$ = `function ${ $name }(${ trans.arguments($args) }){ ${ $5 } }`;
+				}
+			}
+;
+
+DEF_ARGUMENT
+	: ID[arg] COLON? TYPE?[type] COMMA?
+		{ $$ = seg.def_argument($arg, $type); }
+;
+
+DEF_RETURN
+	: RETURN e
+		{ $$ = seg.return($2); }
+;
+
 ECHO
 	: PRINTLN e
-			{ $$ = `echo ${ $e } . PHP_EOL;` }
+			{ $$ = seg.print($e, true); }
 	| PRINT e
-			{ $$ = `echo ${ $e };` }
+			{ $$ = seg.print($e); }
 ;
 
 DEFCLASS
@@ -267,11 +298,7 @@ PRIVACITY
     | PROTECTED
 ;
 
-ARGUMENTS
-	: ID*
-;
-
-/* if */
+/* conditions */
 
 CONDITION_STMT
 	: e
@@ -284,15 +311,26 @@ CONDITION
         { $$ = `if(${ $2 }) { ${ $3 } }` }	
 ;
 
+
+/* loops */
+
 LOOP
-	: FOR NUMBER[to]
+	: FOR_LOOP
+	| EACH_LOOP
+;
+
+EACH_LOOP:
+ 	EACH ID[a] AS ID[b]
+		SENTENCE*[sentence]
+	END
+		{ $$ = seg.each($a, $b, $sentence); }
+;
+
+FOR_LOOP
+	: FOR e[to]
 		SENTENCE*[sentence]
 	  END
 		{ $$ = seg.loop1($to, $sentence); }
-	| EACH ID[a] AS ID[b]
-		SENTENCE*[sentence]
-	  END
-		{ $$ = seg.each($a, $b, $sentence); }
 ;
 
 /* snippets code */
@@ -312,4 +350,19 @@ GETTYPE
 RANGE
 	: NUMBER[a] DOT2 NUMBER[b]
 		{ $$ = seg.range($a, $b) }
+;
+
+/* casting */
+
+CAST
+	: ID TO TYPE
+		{ $$ = seg.cast($ID, $TYPE) }
+;
+
+TYPE
+	: TYPE_STRING
+	| TYPE_NUMBER
+	| TYPE_FLOAT
+	| TYPE_ARRAY
+	| TYPE_BOOL
 ;

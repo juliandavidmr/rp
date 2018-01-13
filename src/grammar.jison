@@ -7,6 +7,9 @@
 
 /* lexical grammar */
 %lex
+
+id [a-zA-Z_][a-zA-Z0-9_]*
+
 %%
 
 \s+                     /* skip whitespace */
@@ -49,6 +52,7 @@
 "public"              return 'PUBLIC'
 "private"             return 'PRIVATE'
 "protected"           return 'PROTECTED'
+"static"				return 'STATIC'
 
 /* echo */
 "println"             return 'PRINTLN'
@@ -82,9 +86,9 @@
 ";"                   return 'SEMICOL'
 '..'                  return 'DOT2'
 '.'                   return 'DOT'
-','					  return 'COMMA'
-[a-zA-Z0-9_]+      	  return 'ID'
-@{ID}      	  		  return 'ATTR'
+','						return 'COMMA'
+{id}					return 'ID'
+\@{id}					return 'ATTR'
 \"(?:\"\"|[^"])*\"    return 'STRING'
 
 <<EOF>>               return 'EOF'
@@ -124,7 +128,9 @@ syntax
 
 e
 	: ID
-		{ $$ = '$' + $ID;}	
+		{ $$ = '$' + $ID; }
+	| ATTR
+		{ $$ = '$this->$' + $ATTR.toString().substring(1, $ATTR.length); }
 	| e '+' e
 		{
 			$$ = trans.operation($1, $3, '+');			
@@ -289,13 +295,16 @@ DEFCLASS
 
 VAR_ASSIGN
 	: ID ASSIGN e 
-		{ $$ = '$' + $1 + '=' + $3 + ';' }
+		{ $$ = seg.assign_var($1, $3); }
+	| ATTR ASSIGN e
+		{ $$ = seg.assign_var($1, $3, true); }
 ;
 
 PRIVACITY
     : PUBLIC
     | PRIVATE
     | PROTECTED
+	| STATIC
 ;
 
 /* conditions */

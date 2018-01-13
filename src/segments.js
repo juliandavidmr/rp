@@ -60,5 +60,11 @@ module.exports = {
     },
     return: function (value) {
         return `return ${value};`
+    },
+    /** assign */
+    assign_var: function (variable, value, is_attibute_class) {
+        return is_attibute_class ?
+            `$this->$${variable.toString().substring(1, variable.length)}=${value};` :
+            `$${variable}=${value};`;
     }
 }

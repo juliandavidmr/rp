@@ -18,6 +18,7 @@ Syntax based on ruby, coffescript and python.
   - [Conditions](#conditions)
   - [Comments](#comments)
   - [Classes](#classes)
+    - [Attributes](#attributes)
   - [Loops](#loops)
   - [Function Calls & Snippets code](#function-calls--snippets-code)
 - [Development](#development)
@@ -158,6 +159,34 @@ class database {
 class database extends mysqli {
     function __construct() {
         echo "Initialized...";
+    }
+}
+```
+
+#### Attributes
+
+The `@` character is used to define or retrieve an object from a class. 
+
+>Note the variable __`name`__ in the example here:
+
+```rb
+class Pet
+    name="Kitty"
+
+    def getName
+        return @name
+    end
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+class Pet {
+    $name = "Kitty";
+
+    function getName() {
+        return $this->$name;
     }
 }
 ```

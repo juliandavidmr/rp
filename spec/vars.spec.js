@@ -18,5 +18,12 @@ describe("Variable", function () {
 		expect(base('abc to string')).toEqual('((string) $abc)');
 		expect(base('(abc to string)')).toEqual('((string) $abc)');
 		expect(base('abc to bool')).toEqual('((bool) $abc)');
-	});	
+	});
+
+	it("Privacity", function () {
+		expect(base('private xyz')).toEqual('private $xyz=null;');
+		expect(base('public _xyz_')).toEqual('public $_xyz_=null;');
+		expect(base('protected xyz')).toEqual('protected $xyz=null;');
+		expect(base('static _xyz_')).toEqual('static $_xyz_=null;');
+	});
 });

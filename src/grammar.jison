@@ -81,6 +81,8 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "^"						return '^'
 "("						return 'PAR_OPEN'
 ")"						return 'PAR_CLOSE'
+"["						return '['
+"]"						return ']'
 "PI"					return 'PI'
 "E"						return 'E'
 ";"						return 'SEMICOL'
@@ -212,23 +214,24 @@ e
 	| e '%'
 		{
 			if (trans.isOperable($1, 0)) {
-				$$ = $1 / 100;
+				$$ = $e/100;
 			} else {
-				$$ = `(${$1}/100)`;
+				$$ = `(${$e}/100)`;
 			}
 		}
 	| BOOLEAN
-		{ $$ = `${ $1 }`;}
+		{ $$ = `${ $1 }`; }
 	| NUMBER
-		{ $$ = Number(yytext);}
+		{ $$ = Number(yytext); }
 	| STRING
-		{ $$ = $1;}
+		{ $$ = $1; }
 	| E
-		{ $$ = Math.E;}
+		{ $$ = Math.E; }
 	| PI
-		{ $$ = Math.PI;}
+		{ $$ = Math.PI; }
 	| SNIPPETS
 	| CAST
+	| DEF_ARRAY
 ;
 
 SENTENCE
@@ -242,24 +245,28 @@ SENTENCE
 	| CAST
 	| DEF_RETURN
 	| COMMENT
-			{ $$ = `` }
+		{ $$ = `` }
 ;
+
+/* variables */
 
 BOOLEAN
 	: TRUE
 	| FALSE
 ;
 
+DEF_ARRAY /* TODO */
+	: '[' ']'
+;
+
+/* functions */
+
 FUNCTION
 	: PRIVACITY?[priv] DEF ID[name] (PAR_OPEN DEF_ARGUMENT* PAR_CLOSE)?[args]
-			SENTENCE*
+			SENTENCE*[content]
 		END
 			{
-				if ($priv) {
-					$$ = `${ $priv } function ${ $name }(${ trans.arguments($args) }){ ${ $5 } }`;
-				} else {
-					$$ = `function ${ $name }(${ trans.arguments($args) }){ ${ $5 } }`;
-				}
+				$$ = seg.def_function($name, $args, $content, $priv);				
 			}
 ;
 
@@ -275,9 +282,9 @@ DEF_RETURN
 
 ECHO
 	: PRINTLN e
-			{ $$ = seg.print($e, true); }
+		{ $$ = seg.print($e, true); }
 	| PRINT e
-			{ $$ = seg.print($e); }
+		{ $$ = seg.print($e); }
 ;
 
 DEFCLASS
@@ -286,18 +293,24 @@ DEFCLASS
 		END
 			{
 				if ($name_extended) {
-					$$ = `class ${ $classname } extends ${$name_extended[1]} { ${ $sentence } }`;
+					$$ = seg.def_class($classname, $sentence, $name_extended[1]);
 				} else {
-					$$ = `class ${ $classname } { ${ $sentence } }`;
+					$$ = seg.def_class($classname, $sentence);
 				}
 			}
 ;
 
 VAR_ASSIGN
-	: ID ASSIGN e 
-		{ $$ = seg.assign_var($1, $3); }
-	| ATTR ASSIGN e
-		{ $$ = seg.assign_var($1, $3, true); }
+	: ID[name] ASSIGN e
+		{ $$ = seg.assign_var($name, $e, false); }
+	| PRIVACITY[priv] ID[name] ASSIGN e
+		{ $$ = seg.assign_var($name, $e, false, $priv); }
+	| PRIVACITY[priv] ID[name]
+		{ $$ = seg.assign_var($name, 'null', false, $priv); }
+	| ATTR[name] ASSIGN e
+		{ $$ = seg.assign_var($name, $e, true); }
+	| PRIVACITY[priv] ATTR[name] ASSIGN e
+		{ $$ = seg.assign_var($name, $e, true, $priv); }
 ;
 
 PRIVACITY
@@ -358,14 +371,14 @@ GETTYPE
 
 RANGE
 	: NUMBER[a] DOT2 NUMBER[b]
-		{ $$ = seg.range($a, $b) }
+		{ $$ = seg.range($a, $b); }
 ;
 
 /* casting */
 
 CAST
 	: ID TO TYPE
-		{ $$ = seg.cast($ID, $TYPE) }
+		{ $$ = seg.cast($ID, $TYPE); }
 ;
 
 TYPE

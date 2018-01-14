@@ -163,11 +163,12 @@ class database extends mysqli {
 
 The `@` character is used to define or retrieve an object from a class. 
 
->Note the variable __`name`__ in the example here:
+>Note the attribute __`name`__ in the example here:
 
 ```rb
 class Pet
-    name="Kitty"
+    private name = "Kitty"
+    public age = 2
 
     def getName
         return @name
@@ -179,7 +180,8 @@ _The equivalent in PHP is:_
 
 ```php
 class Pet {
-    $name = "Kitty";
+    private $name = "Kitty";
+    public $age = 2;
 
     function getName() {
         return $this->$name;
@@ -257,7 +259,7 @@ _Remember to install the npm packages: `npm install` or `yarn`_
 
 ## TODO
 
-- [ ] Loops
+- [ ] Arrays
 - [ ] Inheritance of multiple classes
 - [ ] 'implements' function
 - [ ] Special conditions, as well as coffeescript...

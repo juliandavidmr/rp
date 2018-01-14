@@ -1,4 +1,5 @@
 const u = require('./util')
+const trans = require('./transpile')
 
 module.exports = {
     getType: function (e) {
@@ -62,9 +63,26 @@ module.exports = {
         return `return ${value};`
     },
     /** assign */
-    assign_var: function (variable, value, is_attibute_class) {
-        return is_attibute_class ?
+    assign_var: function (variable, value, is_attibute_class, privacity) {
+        privacity = privacity ? privacity : '';
+        return (is_attibute_class ?
             `$this->$${variable.toString().substring(1, variable.length)}=${value};` :
-            `$${variable}=${value};`;
+            `${privacity} $${variable}=${value};`).trim();
+    },
+    def_variable: function (name, privacity) {
+        privacity = privacity ? privacity : '';
+        return `${privacity} $${name}`.trim();
+    },
+    /** function */
+    def_function: function (name, args, content, priv) {
+        return (`${ priv ? priv : '' } function ${ name }(${ trans.arguments(args) }){ ${ content } }`).trim();
+    },
+    /** class */
+    def_class: function (name, content, extend) {
+        if (extend) {
+            return `class ${ name } extends ${extend}{ ${ content } }`;
+        } else {
+            return `class ${ name } { ${ content } }`;
+        }
     }
 }

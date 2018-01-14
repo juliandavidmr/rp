@@ -1,4 +1,0 @@
-@Get(request)
-def index()
-    println "Welcome"
-end

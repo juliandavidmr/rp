@@ -13,27 +13,27 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 %%
 
 \s+                     /* skip whitespace */
-\/\*[\s\S]*?\*\/|\/\/.* return 'COMMENT'
-[0-9]+("."[0-9]+)?\b    return 'NUMBER'
-"true"                  return 'TRUE'
-"false"                 return 'FALSE'
+\/\*[\s\S]*?\*\/|\/\/.*	return 'COMMENT'
+[0-9]+("."[0-9]+)?\b	return 'NUMBER'
+"true"					return 'TRUE'
+"false"					return 'FALSE'
 
 /* reserved words */
-"return"                return 'RETURN'
-"class"                 return 'CLASS'
-"as"                    return 'AS'
-"each"                  return 'EACH'
-"for"                   return 'FOR'
-"in"                    return 'IN'
-"to"                    return 'TO'
-":"                     return 'COLON'
-"#"                     return 'HASH'
-"?"                     return 'QUESTION'
-"~"                     return 'TILDE'
-"_"                     return 'UNDERSCORE'    
-"def"                   return 'DEF'
-"end"                   return 'END'
-"not"                   return 'NOT'
+"return"				return 'RETURN'
+"class"					return 'CLASS'
+"as"					return 'AS'
+"each"					return 'EACH'
+"for"					return 'FOR'
+"in"					return 'IN'
+"to"					return 'TO'
+":"						return 'COLON'
+"#"						return 'HASH'
+"?"						return 'QUESTION'
+"~"						return 'TILDE'
+"_"						return 'UNDERSCORE'    
+"def"					return 'DEF'
+"end"					return 'END'
+"not"					return 'NOT'
 
 /* types */
 "string"				return 'TYPE_STRING'
@@ -43,56 +43,56 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "float"					return 'TYPE_FLOAT'
 
 /* Logic operators */
-"and"                   return 'AND'
-"&&"                    return 'AND'
-"or"                    return 'OR'
-"||"                    return 'OR'
+"and"					return 'AND'
+"&&"					return 'AND'
+"or"					return 'OR'
+"||"					return 'OR'
 
 /* privacity */
-"public"              return 'PUBLIC'
-"private"             return 'PRIVATE'
-"protected"           return 'PROTECTED'
+"public"				return 'PUBLIC'
+"private"				return 'PRIVATE'
+"protected"				return 'PROTECTED'
 "static"				return 'STATIC'
 
 /* echo */
-"println"             return 'PRINTLN'
-"print"               return 'PRINT'
+"println"				return 'PRINTLN'
+"print"					return 'PRINT'
 
 /* conditons */
-"if"                  return 'IF'
+"if"					return 'IF'
 
 /* snippets */
-"typeof"    		  return "TYPEOF"
+"typeof"				return "TYPEOF"
 
 /*  */
-"%"                   return '%'
-"="                   return 'ASSIGN'
-"=="                  return 'EQUAL'
-"==="                 return 'IDENTICAL'
-"*"                   return '*'
-"/"                   return '/'
-"-"                   return '-'
-"+"                   return '+'
-">"                   return '>'
-"<"                   return '<'
-">="                  return '>='
-"<="                  return '<='
-"!="                  return '!='
-"^"                   return '^'
-"("                   return 'PAR_OPEN'
-")"                   return 'PAR_CLOSE'
-"PI"                  return 'PI'
-"E"                   return 'E'
-";"                   return 'SEMICOL'
-'..'                  return 'DOT2'
-'.'                   return 'DOT'
+"%"						return '%'
+"="						return 'ASSIGN'
+"=="					return 'EQUAL'
+"==="					return 'IDENTICAL'
+"*"						return '*'
+"/"						return '/'
+"-"						return '-'
+"+"						return '+'
+">"						return '>'
+"<"						return '<'
+">="					return '>='
+"<="					return '<='
+"!="					return '!='
+"^"						return '^'
+"("						return 'PAR_OPEN'
+")"						return 'PAR_CLOSE'
+"PI"					return 'PI'
+"E"						return 'E'
+";"						return 'SEMICOL'
+'..'					return 'DOT2'
+'.'						return 'DOT'
 ','						return 'COMMA'
 {id}					return 'ID'
 \@{id}					return 'ATTR'
-\"(?:\"\"|[^"])*\"    return 'STRING'
+\"(?:\"\"|[^"])*\"		return 'STRING'
 
-<<EOF>>               return 'EOF'
-.                     return 'INVALID'
+<<EOF>>					return 'EOF'
+.						return 'INVALID'
 
 /lex
 
@@ -245,18 +245,18 @@ SENTENCE
 			{ $$ = `` }
 ;
 
-BOOLEAN:
-	TRUE
+BOOLEAN
+	: TRUE
 	| FALSE
 ;
 
 FUNCTION
-	: PRIVACITY? DEF ID[name] (PAR_OPEN DEF_ARGUMENT* PAR_CLOSE)?[args]
+	: PRIVACITY?[priv] DEF ID[name] (PAR_OPEN DEF_ARGUMENT* PAR_CLOSE)?[args]
 			SENTENCE*
 		END
 			{
-				if ($1) {
-					$$ = `${ $1 } function ${ $name }(${ trans.arguments($args) }){ ${ $5 } }`;
+				if ($priv) {
+					$$ = `${ $priv } function ${ $name }(${ trans.arguments($args) }){ ${ $5 } }`;
 				} else {
 					$$ = `function ${ $name }(${ trans.arguments($args) }){ ${ $5 } }`;
 				}
@@ -270,7 +270,7 @@ DEF_ARGUMENT
 
 DEF_RETURN
 	: RETURN e
-		{ $$ = seg.return($2); }
+		{ $$ = seg.return($e); }
 ;
 
 ECHO

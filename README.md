@@ -1,11 +1,6 @@
 # rp
 
-(in progress) rp is a php transpiler, it allows you to write a more clean and comfortable new syntax.
-
-Syntax based on ruby, coffescript and python.
-
-- Shorter functions
-- Goodbye to the `;` and `$`, also a lot of unnecessary elements.
+__rp__ is an abstraction of the programming language php. It has clean syntax, free of some repetitive php elements _(such as $)_, including support for many php functions and segments _(called snippets)_ that help you create files with less code content.
 
 ## Resources
 
@@ -23,6 +18,7 @@ Syntax based on ruby, coffescript and python.
   - [Function Calls & Snippets code](#function-calls--snippets-code)
 - [Development](#development)
 - [Test](#test)
+- [Examples](./examples)
 
 ## Language Reference
 
@@ -261,10 +257,11 @@ _Remember to install the npm packages: `npm install` or `yarn`_
 
 ## TODO
 
-- [x] Loops
+- [ ] Loops
 - [ ] Inheritance of multiple classes
 - [ ] 'implements' function
 - [ ] Special conditions, as well as coffeescript...
 - [ ] Access to PHP's own functions
+- [ ] [CLI](https://github.com/juliandavidmr/rp/issues/4)
 
 > Many more features come...

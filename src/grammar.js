@@ -654,7 +654,6 @@ symbols_: {
   "FOR": 46,
   "FOR_LOOP": 72,
   "FUNCTION": 61,
-  "FUNCTION_option": 80,
   "FUNCTION_repetition": 83,
   "GETTYPE": 74,
   "GETTYPE_group": 90,
@@ -696,6 +695,7 @@ symbols_: {
   "e": 58,
   "error": 2,
   "name_extended": 87,
+  "priv": 80,
   "sentence": 88,
   "syntax": 57,
   "syntax_repetition": 78,
@@ -1166,7 +1166,7 @@ case 26:
 case 27:
     /*! Production::    e : STRING */
 case 78:
-    /*! Production::    FUNCTION_option : PRIVACITY */
+    /*! Production::    priv : PRIVACITY */
 case 86:
     /*! Production::    DEF_ARGUMENT_option : COLON */
 case 88:
@@ -1264,7 +1264,7 @@ case 41:
     break;
 
 case 44:
-    /*! Production::    FUNCTION : FUNCTION_option DEF ID args FUNCTION_repetition END */
+    /*! Production::    FUNCTION : priv DEF ID args FUNCTION_repetition END */
 
     if (yyvstack[yysp - 5]) {
         this.$ = `${ yyvstack[yysp - 5] } function ${ yyvstack[yysp - 3] }(${ trans.arguments(yyvstack[yysp - 2]) }){ ${ yyvstack[yysp - 1] } }`;
@@ -1395,7 +1395,7 @@ case 96:
     break;
 
 case 77:
-    /*! Production::    FUNCTION_option : %epsilon */
+    /*! Production::    priv : %epsilon */
 case 81:
     /*! Production::    args : %epsilon */
 case 85:

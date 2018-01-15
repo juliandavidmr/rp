@@ -2,6 +2,10 @@ const base = require("./base")
 const seg = require('../src/segments')
 
 describe("seg code", function () {
+	it("Print", function () {
+		expect(base('print 2*4')).toEqual('echo 8;');
+	});
+
 	it("Typeof", function () {
 		expect(base('typeof value')).toEqual('gettype($value)');
 		expect(base('typeof 2100')).toEqual('gettype(2100)');

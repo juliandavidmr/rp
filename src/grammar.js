@@ -623,87 +623,89 @@ symbols_: {
   ">": 7,
   ">=": 25,
   "AND": 20,
-  "AS": 47,
-  "ASSIGN": 40,
+  "AS": 33,
+  "ASSIGN": 42,
   "ATTR": 17,
-  "BOOLEAN": 62,
-  "CAST": 79,
-  "CLASS": 39,
-  "COLON": 57,
-  "COMMA": 58,
+  "BOOLEAN": 64,
+  "CAST": 81,
+  "CLASS": 41,
+  "COLON": 58,
+  "COMMA": 59,
   "COMMENT": 31,
-  "CONDITION": 72,
-  "CONDITION_STMT": 71,
-  "CONDITION_repetition": 92,
+  "CONDITION": 74,
+  "CONDITION_STMT": 73,
+  "CONDITION_repetition": 94,
   "DEF": 34,
-  "DEFCLASS": 68,
-  "DEF_ARGUMENT": 65,
-  "DEF_ARGUMENT_option": 87,
-  "DEF_ARGUMENT_option2": 89,
-  "DEF_ARRAY": 63,
-  "DEF_RETURN": 66,
+  "DEFCLASS": 70,
+  "DEF_ARGUMENT": 67,
+  "DEF_ARGUMENT_option": 89,
+  "DEF_ARGUMENT_option2": 91,
+  "DEF_ARRAY": 65,
+  "DEF_RETURN": 68,
+  "DEF_USE": 63,
   "DOT": 27,
-  "DOT2": 50,
+  "DOT2": 51,
   "E": 11,
-  "EACH": 46,
-  "EACH_LOOP": 74,
-  "ECHO": 67,
-  "END": 35,
+  "EACH": 48,
+  "EACH_LOOP": 76,
+  "ECHO": 69,
+  "END": 37,
   "EOF": 1,
   "EQUAL": 21,
-  "FALSE": 33,
-  "FOR": 48,
-  "FOR_LOOP": 75,
-  "FUNCTION": 64,
-  "GETTYPE": 77,
-  "GETTYPE_group": 93,
+  "FALSE": 36,
+  "FOR": 49,
+  "FOR_LOOP": 77,
+  "FUNCTION": 66,
+  "GETTYPE": 79,
+  "GETTYPE_group": 95,
   "ID": 16,
   "IDENTICAL": 22,
-  "IF": 45,
-  "LOOP": 73,
+  "IF": 47,
+  "LOOP": 75,
   "NOT": 18,
   "NUMBER": 28,
   "OR": 19,
   "PAR_CLOSE": 15,
   "PAR_OPEN": 14,
   "PI": 30,
-  "PRINT": 38,
-  "PRINTLN": 37,
-  "PRIVACITY": 70,
-  "PRIVATE": 42,
-  "PROTECTED": 43,
-  "PUBLIC": 41,
-  "RANGE": 78,
-  "RETURN": 36,
-  "SENTENCE": 61,
-  "SNIPPETS": 76,
-  "STATIC": 44,
+  "PRINT": 40,
+  "PRINTLN": 39,
+  "PRIVACITY": 72,
+  "PRIVATE": 44,
+  "PROTECTED": 45,
+  "PUBLIC": 43,
+  "RANGE": 80,
+  "RETURN": 38,
+  "SENTENCE": 62,
+  "SNIPPETS": 78,
+  "STATIC": 46,
   "STRING": 29,
-  "TO": 51,
-  "TRUE": 32,
-  "TYPE": 80,
-  "TYPEOF": 49,
-  "TYPE_ARRAY": 55,
-  "TYPE_BOOL": 56,
-  "TYPE_FLOAT": 54,
-  "TYPE_NUMBER": 53,
-  "TYPE_STRING": 52,
-  "VAR_ASSIGN": 69,
+  "TO": 52,
+  "TRUE": 35,
+  "TYPE": 82,
+  "TYPEOF": 50,
+  "TYPE_ARRAY": 56,
+  "TYPE_BOOL": 57,
+  "TYPE_FLOAT": 55,
+  "TYPE_NUMBER": 54,
+  "TYPE_STRING": 53,
+  "USE": 32,
+  "VAR_ASSIGN": 71,
   "[": 12,
   "]": 13,
   "^": 9,
-  "args": 85,
-  "args_repetition": 84,
-  "content": 86,
-  "e": 60,
+  "args": 87,
+  "args_repetition": 86,
+  "content": 88,
+  "e": 61,
   "error": 2,
-  "name_extended": 90,
-  "priv": 83,
-  "sentence": 91,
-  "syntax": 59,
-  "syntax_repetition": 81,
-  "syntax_repetition2": 82,
-  "type": 88
+  "name_extended": 92,
+  "priv": 85,
+  "sentence": 93,
+  "syntax": 60,
+  "syntax_repetition": 83,
+  "syntax_repetition2": 84,
+  "type": 90
 },
 terminals_: {
   1: "EOF",
@@ -737,33 +739,34 @@ terminals_: {
   29: "STRING",
   30: "PI",
   31: "COMMENT",
-  32: "TRUE",
-  33: "FALSE",
+  32: "USE",
+  33: "AS",
   34: "DEF",
-  35: "END",
-  36: "RETURN",
-  37: "PRINTLN",
-  38: "PRINT",
-  39: "CLASS",
-  40: "ASSIGN",
-  41: "PUBLIC",
-  42: "PRIVATE",
-  43: "PROTECTED",
-  44: "STATIC",
-  45: "IF",
-  46: "EACH",
-  47: "AS",
-  48: "FOR",
-  49: "TYPEOF",
-  50: "DOT2",
-  51: "TO",
-  52: "TYPE_STRING",
-  53: "TYPE_NUMBER",
-  54: "TYPE_FLOAT",
-  55: "TYPE_ARRAY",
-  56: "TYPE_BOOL",
-  57: "COLON",
-  58: "COMMA"
+  35: "TRUE",
+  36: "FALSE",
+  37: "END",
+  38: "RETURN",
+  39: "PRINTLN",
+  40: "PRINT",
+  41: "CLASS",
+  42: "ASSIGN",
+  43: "PUBLIC",
+  44: "PRIVATE",
+  45: "PROTECTED",
+  46: "STATIC",
+  47: "IF",
+  48: "EACH",
+  49: "FOR",
+  50: "TYPEOF",
+  51: "DOT2",
+  52: "TO",
+  53: "TYPE_STRING",
+  54: "TYPE_NUMBER",
+  55: "TYPE_FLOAT",
+  56: "TYPE_ARRAY",
+  57: "TYPE_BOOL",
+  58: "COLON",
+  59: "COMMA"
 },
 TERROR: 2,
     EOF: 1,
@@ -869,36 +872,34 @@ TERROR: 2,
     },
 productions_: bp({
   pop: u([
-  59,
-  59,
+  60,
+  60,
   s,
-  [60, 30],
+  [61, 30],
   s,
-  [61, 10],
-  62,
+  [62, 11],
   s,
-  [62, 6, 1],
-  67,
-  68,
+  [63, 4],
+  64,
   s,
-  [69, 5],
+  [64, 6, 1],
+  69,
+  70,
   s,
-  [70, 4],
-  71,
-  72,
+  [71, 5],
+  s,
+  [72, 4],
   73,
+  74,
+  75,
   s,
-  [73, 4, 1],
-  76,
-  77,
+  [75, 4, 1],
+  78,
+  79,
   s,
-  [77, 4, 1],
+  [79, 4, 1],
   s,
-  [80, 4],
-  81,
-  81,
-  82,
-  82,
+  [82, 4],
   83,
   83,
   84,
@@ -919,8 +920,12 @@ productions_: bp({
   91,
   92,
   92,
+  93,
+  93,
+  94,
+  94,
   s,
-  [93, 4]
+  [95, 4]
 ]),
   rule: u([
   2,
@@ -935,8 +940,13 @@ productions_: bp({
   [15, 3],
   2,
   s,
-  [1, 20],
+  [1, 19],
   2,
+  4,
+  3,
+  5,
+  c,
+  [6, 3],
   6,
   4,
   s,
@@ -947,7 +957,7 @@ productions_: bp({
   2,
   3,
   c,
-  [54, 3],
+  [59, 3],
   s,
   [1, 3],
   c,
@@ -957,7 +967,7 @@ productions_: bp({
   [4, 3],
   2,
   c,
-  [49, 3],
+  [54, 3],
   s,
   [1, 5],
   0,
@@ -1171,21 +1181,21 @@ case 26:
 
 case 27:
     /*! Production::    e : STRING */
-case 83:
+case 88:
     /*! Production::    priv : PRIVACITY */
-case 91:
+case 96:
     /*! Production::    DEF_ARGUMENT_option : COLON */
-case 93:
+case 98:
     /*! Production::    type : TYPE */
-case 95:
+case 100:
     /*! Production::    DEF_ARGUMENT_option2 : COMMA */
-case 102:
+case 107:
     /*! Production::    GETTYPE_group : NUMBER */
-case 103:
+case 108:
     /*! Production::    GETTYPE_group : STRING */
-case 104:
+case 109:
     /*! Production::    GETTYPE_group : TRUE */
-case 105:
+case 110:
     /*! Production::    GETTYPE_group : FALSE */
 
     this.$ = yyvstack[yysp];
@@ -1227,37 +1237,39 @@ case 40:
     /*! Production::    SENTENCE : CAST */
 case 41:
     /*! Production::    SENTENCE : DEF_RETURN */
-case 43:
+case 42:
+    /*! Production::    SENTENCE : DEF_USE */
+case 48:
     /*! Production::    BOOLEAN : TRUE */
-case 44:
+case 49:
     /*! Production::    BOOLEAN : FALSE */
-case 57:
+case 62:
     /*! Production::    PRIVACITY : PUBLIC */
-case 58:
-    /*! Production::    PRIVACITY : PRIVATE */
-case 59:
-    /*! Production::    PRIVACITY : PROTECTED */
-case 60:
-    /*! Production::    PRIVACITY : STATIC */
-case 61:
-    /*! Production::    CONDITION_STMT : e */
 case 63:
-    /*! Production::    LOOP : FOR_LOOP */
+    /*! Production::    PRIVACITY : PRIVATE */
 case 64:
-    /*! Production::    LOOP : EACH_LOOP */
-case 67:
-    /*! Production::    SNIPPETS : GETTYPE */
+    /*! Production::    PRIVACITY : PROTECTED */
+case 65:
+    /*! Production::    PRIVACITY : STATIC */
+case 66:
+    /*! Production::    CONDITION_STMT : e */
 case 68:
-    /*! Production::    SNIPPETS : RANGE */
+    /*! Production::    LOOP : FOR_LOOP */
+case 69:
+    /*! Production::    LOOP : EACH_LOOP */
+case 72:
+    /*! Production::    SNIPPETS : GETTYPE */
 case 73:
+    /*! Production::    SNIPPETS : RANGE */
+case 78:
     /*! Production::    TYPE : TYPE_STRING */
-case 74:
+case 79:
     /*! Production::    TYPE : TYPE_NUMBER */
-case 75:
+case 80:
     /*! Production::    TYPE : TYPE_FLOAT */
-case 76:
+case 81:
     /*! Production::    TYPE : TYPE_ARRAY */
-case 77:
+case 82:
     /*! Production::    TYPE : TYPE_BOOL */
 
     // default action (generated by JISON mode classic/merge :: 1,VT,VA,-,-,-,-,-,-):
@@ -1265,13 +1277,37 @@ case 77:
     // END of default action (generated by JISON mode classic/merge :: 1,VT,VA,-,-,-,-,-,-)
     break;
 
-case 42:
+case 43:
     /*! Production::    SENTENCE : COMMENT */
 
     this.$ = ``
     break;
 
+case 44:
+    /*! Production::    DEF_USE : USE STRING */
+
+    this.$ = seg.use(yyvstack[yysp]);
+    break;
+
 case 45:
+    /*! Production::    DEF_USE : USE STRING AS ID */
+
+    this.$ = seg.use(yyvstack[yysp - 2], yyvstack[yysp]);
+    break;
+
+case 46:
+    /*! Production::    DEF_USE : USE DEF STRING */
+
+    this.$ = seg.use_function(yyvstack[yysp]);
+    break;
+
+case 47:
+    /*! Production::    DEF_USE : USE DEF STRING AS ID */
+
+    this.$ = seg.use_function(yyvstack[yysp - 2], yyvstack[yysp]);
+    break;
+
+case 50:
     /*! Production::    DEF_ARRAY : "[" "]" */
 
     // default action (generated by JISON mode classic/merge :: 2,VT,VA,-,-,-,-,-,-):
@@ -1279,37 +1315,37 @@ case 45:
     // END of default action (generated by JISON mode classic/merge :: 2,VT,VA,-,-,-,-,-,-)
     break;
 
-case 46:
+case 51:
     /*! Production::    FUNCTION : priv DEF ID args content END */
 
     this.$ = seg.def_function(yyvstack[yysp - 3], yyvstack[yysp - 2], yyvstack[yysp - 1], yyvstack[yysp - 5]);
     break;
 
-case 47:
+case 52:
     /*! Production::    DEF_ARGUMENT : ID DEF_ARGUMENT_option type DEF_ARGUMENT_option2 */
 
     this.$ = seg.def_argument(yyvstack[yysp - 3], yyvstack[yysp - 1]);
     break;
 
-case 48:
+case 53:
     /*! Production::    DEF_RETURN : RETURN e */
 
     this.$ = seg.return(yyvstack[yysp]);
     break;
 
-case 49:
+case 54:
     /*! Production::    ECHO : PRINTLN e */
 
     this.$ = seg.print(yyvstack[yysp], true);
     break;
 
-case 50:
+case 55:
     /*! Production::    ECHO : PRINT e */
 
     this.$ = seg.print(yyvstack[yysp]);
     break;
 
-case 51:
+case 56:
     /*! Production::    DEFCLASS : CLASS ID name_extended sentence END */
 
     if (yyvstack[yysp - 2]) {
@@ -1319,134 +1355,134 @@ case 51:
     }
     break;
 
-case 52:
+case 57:
     /*! Production::    VAR_ASSIGN : ID ASSIGN e */
 
     this.$ = seg.assign_var(yyvstack[yysp - 2], yyvstack[yysp], false);
     break;
 
-case 53:
+case 58:
     /*! Production::    VAR_ASSIGN : PRIVACITY ID ASSIGN e */
 
     this.$ = seg.assign_var(yyvstack[yysp - 2], yyvstack[yysp], false, yyvstack[yysp - 3]);
     break;
 
-case 54:
+case 59:
     /*! Production::    VAR_ASSIGN : PRIVACITY ID */
 
     this.$ = seg.assign_var(yyvstack[yysp], 'null', false, yyvstack[yysp - 1]);
     break;
 
-case 55:
+case 60:
     /*! Production::    VAR_ASSIGN : ATTR ASSIGN e */
 
     this.$ = seg.assign_var(yyvstack[yysp - 2], yyvstack[yysp], true);
     break;
 
-case 56:
+case 61:
     /*! Production::    VAR_ASSIGN : PRIVACITY ATTR ASSIGN e */
 
     this.$ = seg.assign_var(yyvstack[yysp - 2], yyvstack[yysp], true, yyvstack[yysp - 3]);
     break;
 
-case 62:
+case 67:
     /*! Production::    CONDITION : IF CONDITION_STMT CONDITION_repetition END */
 
     this.$ = `if(${ yyvstack[yysp - 2] }) { ${ yyvstack[yysp - 1] } }`
     break;
 
-case 65:
+case 70:
     /*! Production::    EACH_LOOP : EACH ID AS ID sentence END */
 
     this.$ = seg.each(yyvstack[yysp - 4], yyvstack[yysp - 2], yyvstack[yysp - 1]);
     break;
 
-case 66:
+case 71:
     /*! Production::    FOR_LOOP : FOR e sentence END */
 
     this.$ = seg.loop1(yyvstack[yysp - 2], yyvstack[yysp - 1]);
     break;
 
-case 69:
+case 74:
     /*! Production::    GETTYPE : TYPEOF ID */
 
     this.$ = seg.getType('$' + yyvstack[yysp])
     break;
 
-case 70:
+case 75:
     /*! Production::    GETTYPE : TYPEOF GETTYPE_group */
 
     this.$ = seg.getType(yyvstack[yysp])
     break;
 
-case 71:
+case 76:
     /*! Production::    RANGE : NUMBER DOT2 NUMBER */
 
     this.$ = seg.range(yyvstack[yysp - 2], yyvstack[yysp]);
     break;
 
-case 72:
+case 77:
     /*! Production::    CAST : ID TO TYPE */
 
     this.$ = seg.cast(yyvstack[yysp - 2], yyvstack[yysp]);
     break;
 
-case 78:
+case 83:
     /*! Production::    syntax_repetition : %epsilon */
-case 80:
+case 85:
     /*! Production::    syntax_repetition2 : %epsilon */
-case 84:
+case 89:
     /*! Production::    args_repetition : %epsilon */
-case 88:
+case 93:
     /*! Production::    content : %epsilon */
-case 98:
+case 103:
     /*! Production::    sentence : %epsilon */
-case 100:
+case 105:
     /*! Production::    CONDITION_repetition : %epsilon */
 
     this.$ = [];
     break;
 
-case 79:
+case 84:
     /*! Production::    syntax_repetition : syntax_repetition SENTENCE */
-case 81:
+case 86:
     /*! Production::    syntax_repetition2 : syntax_repetition2 SENTENCE */
-case 85:
+case 90:
     /*! Production::    args_repetition : args_repetition DEF_ARGUMENT */
-case 89:
+case 94:
     /*! Production::    content : content SENTENCE */
-case 99:
+case 104:
     /*! Production::    sentence : sentence SENTENCE */
-case 101:
+case 106:
     /*! Production::    CONDITION_repetition : CONDITION_repetition SENTENCE */
 
     yyvstack[yysp - 1].push(yyvstack[yysp]);
     this.$ = yyvstack[yysp - 1];
     break;
 
-case 82:
+case 87:
     /*! Production::    priv : %epsilon */
-case 86:
+case 91:
     /*! Production::    args : %epsilon */
-case 90:
+case 95:
     /*! Production::    DEF_ARGUMENT_option : %epsilon */
-case 92:
+case 97:
     /*! Production::    type : %epsilon */
-case 94:
+case 99:
     /*! Production::    DEF_ARGUMENT_option2 : %epsilon */
-case 96:
+case 101:
     /*! Production::    name_extended : %epsilon */
 
     this.$ = undefined;
     break;
 
-case 87:
+case 92:
     /*! Production::    args : PAR_OPEN args_repetition PAR_CLOSE */
 
     this.$ = [yyvstack[yysp - 2], yyvstack[yysp - 1], yyvstack[yysp]];
     break;
 
-case 97:
+case 102:
     /*! Production::    name_extended : COLON ID */
 
     this.$ = [yyvstack[yysp - 1], yyvstack[yysp]];
@@ -1456,12 +1492,12 @@ case 97:
 },
 table: bt({
   len: u([
-  21,
+  22,
   1,
-  34,
+  36,
   1,
   s,
-  [0, 12],
+  [0, 13],
   2,
   3,
   1,
@@ -1472,77 +1508,84 @@ table: bt({
   0,
   0,
   c,
-  [22, 3],
-  c,
-  [6, 3],
-  0,
-  0,
+  [23, 3],
+  20,
+  2,
+  s,
+  [0, 4],
   6,
   1,
   20,
   1,
-  34,
+  36,
   20,
   6,
+  22,
   c,
-  [21, 3],
-  1,
-  35,
-  38,
+  [7, 4],
+  39,
   0,
   s,
   [20, 3],
   0,
-  38,
+  39,
   s,
   [0, 8],
   1,
   1,
-  37,
-  37,
-  20,
-  37,
+  38,
+  38,
+  21,
+  38,
+  22,
   c,
-  [12, 7],
-  36,
+  [66, 7],
+  1,
+  37,
   1,
   1,
   0,
-  c,
-  [12, 7],
+  38,
+  s,
+  [0, 6],
   20,
   20,
-  37,
-  34,
+  38,
+  36,
   s,
   [20, 16],
   0,
-  37,
-  37,
+  38,
+  38,
   18,
   0,
-  20,
+  21,
+  s,
+  [1, 3],
+  22,
+  0,
   c,
-  [36, 3],
+  [117, 3],
+  38,
   c,
-  [111, 3],
-  37,
-  c,
-  [40, 3],
+  [42, 3],
   c,
   [4, 3],
   s,
-  [37, 13],
+  [38, 13],
   c,
-  [77, 3],
-  34,
+  [81, 3],
+  36,
   c,
-  [71, 4],
-  34,
+  [122, 5],
+  1,
+  36,
   3,
   0,
+  0,
   c,
-  [8, 4],
+  [11, 3],
+  0,
   0,
   10,
   0,
@@ -1559,49 +1602,49 @@ table: bt({
   17,
   28,
   31,
+  32,
   34,
   s,
-  [36, 4, 1],
+  [38, 4, 1],
   s,
-  [41, 6, 1],
-  48,
-  49,
-  59,
-  81,
+  [43, 8, 1],
+  60,
+  83,
   1,
   1,
   c,
-  [21, 17],
-  61,
-  64,
+  [22, 18],
+  62,
+  63,
+  66,
   s,
-  [66, 5, 1],
+  [68, 5, 1],
   s,
-  [72, 8, 1],
-  83,
-  82,
-  40,
-  51,
+  [74, 8, 1],
+  85,
+  84,
+  42,
+  52,
   16,
   17,
   34,
-  40,
+  42,
   4,
   11,
   12,
   c,
-  [65, 3],
+  [68, 3],
   18,
   28,
   29,
   30,
-  32,
-  33,
-  49,
-  60,
-  62,
-  63,
-  71,
+  35,
+  36,
+  50,
+  61,
+  64,
+  65,
+  73,
   c,
   [29, 4],
   34,
@@ -1613,35 +1656,36 @@ table: bt({
   [20, 20],
   16,
   c,
-  [21, 21],
+  [21, 20],
+  29,
+  34,
+  16,
   28,
   29,
-  32,
-  33,
-  93,
-  50,
+  35,
+  36,
+  95,
+  51,
   c,
-  [27, 21],
+  [50, 21],
   15,
   c,
-  [152, 33],
+  [156, 35],
   c,
-  [55, 20],
+  [57, 20],
   s,
-  [52, 5, 1],
-  80,
+  [53, 5, 1],
+  82,
   1,
   c,
-  [61, 6],
+  [63, 7],
   s,
-  [35, 12, 1],
-  48,
-  49,
+  [37, 14, 1],
   c,
-  [193, 17],
+  [198, 17],
   c,
-  [48, 4],
-  92,
+  [49, 4],
+  94,
   s,
   [3, 8, 1],
   16,
@@ -1649,158 +1693,169 @@ table: bt({
   s,
   [19, 10, 1],
   c,
-  [58, 7],
+  [59, 8],
   c,
-  [57, 8],
+  [58, 8],
   1,
   c,
-  [36, 8],
+  [37, 8],
   c,
-  [86, 3],
+  [88, 3],
   c,
-  [37, 25],
-  51,
+  [38, 26],
+  52,
   c,
-  [265, 40],
+  [272, 40],
   c,
   [20, 20],
   c,
-  [98, 37],
-  50,
+  [99, 38],
+  51,
   13,
   16,
   c,
-  [40, 37],
+  [41, 38],
   c,
-  [37, 37],
+  [38, 38],
   c,
-  [288, 10],
+  [294, 11],
   c,
-  [18, 8],
-  57,
-  90,
+  [19, 8],
+  58,
+  92,
   c,
-  [57, 37],
+  [97, 39],
+  c,
+  [355, 6],
+  33,
+  c,
+  [22, 14],
+  29,
   28,
   c,
-  [305, 35],
-  91,
-  47,
+  [335, 36],
+  93,
+  33,
   1,
   c,
-  [76, 37],
+  [101, 38],
   c,
-  [287, 77],
+  [317, 78],
   c,
-  [210, 18],
+  [238, 19],
   c,
-  [560, 36],
+  [596, 37],
   c,
   [20, 300],
   c,
-  [638, 74],
+  [670, 76],
   c,
-  [36, 9],
+  [37, 9],
   c,
-  [34, 9],
+  [35, 9],
   c,
-  [1179, 6],
+  [1224, 7],
   c,
-  [37, 13],
-  85,
-  91,
+  [38, 13],
+  87,
+  93,
+  16,
   16,
   c,
-  [468, 34],
+  [653, 22],
   c,
-  [787, 75],
+  [496, 36],
   c,
-  [37, 555],
+  [847, 77],
+  c,
+  [38, 570],
+  88,
   86,
-  84,
   c,
-  [666, 34],
-  91,
+  [685, 37],
+  93,
   c,
-  [35, 34],
+  [38, 36],
   15,
   16,
-  65,
+  67,
   c,
-  [37, 36],
+  [39, 38],
   s,
-  [52, 7, 1],
-  87,
+  [53, 7, 1],
+  89,
   c,
   [10, 7],
-  58,
-  80,
-  88,
+  59,
+  82,
+  90,
   15,
   16,
-  58,
-  89
+  59,
+  91
 ]),
   type: u([
   s,
-  [2, 19],
+  [2, 20],
   0,
   0,
   1,
   c,
-  [21, 20],
+  [22, 21],
   s,
-  [0, 15],
+  [0, 16],
   c,
-  [57, 21],
+  [37, 27],
   c,
-  [27, 20],
+  [22, 21],
   c,
-  [21, 20],
+  [20, 33],
   c,
-  [41, 33],
+  [21, 15],
   c,
-  [68, 35],
+  [70, 35],
   c,
-  [152, 22],
+  [156, 24],
   c,
-  [82, 40],
+  [57, 25],
+  c,
+  [63, 21],
+  c,
+  [198, 38],
   s,
-  [2, 21],
+  [2, 74],
   c,
-  [220, 27],
-  s,
-  [2, 67],
+  [272, 40],
   c,
-  [265, 40],
+  [135, 95],
   c,
-  [133, 93],
+  [184, 50],
   c,
-  [180, 48],
+  [99, 152],
   c,
-  [74, 126],
+  [317, 84],
   c,
-  [287, 82],
-  c,
-  [560, 41],
+  [596, 42],
   c,
   [20, 308],
   c,
-  [656, 99],
+  [688, 102],
   c,
-  [1028, 49],
+  [116, 44],
+  c,
+  [1247, 36],
   s,
-  [2, 617],
+  [2, 628],
   c,
-  [632, 20],
+  [1896, 29],
   c,
-  [1846, 35],
+  [685, 10],
   c,
-  [34, 18],
+  [38, 38],
   c,
-  [37, 37],
+  [39, 40],
   c,
-  [1366, 16],
+  [1422, 16],
   c,
   [20, 5],
   0
@@ -1809,97 +1864,80 @@ table: bt({
   1,
   2,
   5,
+  15,
   8,
   14,
   9,
   11,
   6,
-  17,
+  18,
   7,
   12,
+  28,
   27,
-  26,
   10,
-  23,
   24,
+  25,
   13,
-  20,
-  37,
-  44,
-  50,
+  21,
+  39,
+  46,
+  52,
+  59,
+  45,
   57,
-  43,
-  55,
-  23,
   24,
-  56,
-  62,
-  50,
-  57,
+  25,
+  58,
+  64,
+  52,
+  59,
   c,
   [7, 4],
-  63,
-  c,
-  [7, 6],
   65,
   c,
   [7, 6],
   67,
-  73,
   c,
-  [8, 6],
-  76,
-  c,
-  [54, 15],
+  [7, 6],
+  71,
   77,
   c,
-  [23, 6],
-  78,
-  86,
+  [8, 6],
+  80,
+  c,
+  [55, 16],
+  81,
+  c,
+  [24, 6],
+  82,
+  90,
   c,
   [8, 6],
-  87,
-  105,
+  91,
+  109,
   c,
   [8, 6],
-  106,
-  c,
-  [7, 6],
-  107,
-  c,
-  [7, 6],
   110,
-  113,
-  116,
-  c,
-  [9, 6],
-  117,
   c,
   [7, 6],
+  111,
+  c,
+  [7, 6],
+  114,
   119,
-  c,
-  [69, 15],
-  120,
-  c,
-  [23, 6],
-  121,
-  c,
-  [7, 6],
   122,
   c,
-  [7, 6],
+  [9, 6],
   123,
-  c,
-  [7, 6],
-  124,
   c,
   [7, 6],
   125,
   c,
-  [7, 6],
+  [70, 16],
   126,
   c,
-  [7, 6],
+  [24, 6],
   127,
   c,
   [7, 6],
@@ -1927,622 +1965,662 @@ table: bt({
   135,
   c,
   [7, 6],
-  137,
-  139,
-  142,
+  136,
   c,
-  [130, 15],
-  144,
+  [7, 6],
+  137,
+  c,
+  [7, 6],
+  138,
+  c,
+  [7, 6],
+  139,
+  c,
+  [7, 6],
+  140,
+  c,
+  [7, 6],
+  141,
+  c,
+  [7, 6],
+  143,
   145,
+  150,
+  c,
+  [131, 16],
+  152,
+  153,
+  c,
+  [19, 17],
+  156,
+  158,
   c,
   [18, 16],
-  147,
-  149,
+  160,
   c,
-  [17, 15],
-  151,
-  c,
-  [34, 16],
-  154,
-  157,
-  156,
-  158
+  [36, 17],
+  163,
+  166,
+  165,
+  167
 ]),
   mode: u([
   2,
   1,
   s,
-  [2, 17],
+  [2, 18],
   s,
-  [1, 5],
+  [1, 6],
   c,
-  [6, 6],
+  [7, 7],
   s,
-  [1, 11],
+  [1, 10],
   c,
   [17, 17],
   s,
-  [1, 64],
+  [1, 67],
   c,
-  [81, 31],
+  [84, 31],
   c,
-  [146, 13],
+  [151, 14],
   c,
-  [155, 13],
+  [160, 14],
   c,
-  [43, 19],
+  [44, 18],
   c,
-  [54, 21],
+  [55, 22],
   s,
-  [2, 41],
+  [2, 42],
   c,
-  [178, 41],
+  [181, 41],
   c,
-  [77, 39],
+  [78, 40],
   c,
-  [81, 9],
+  [82, 9],
   c,
-  [92, 12],
+  [93, 12],
   c,
-  [118, 25],
+  [120, 26],
   c,
-  [37, 29],
+  [38, 30],
   c,
-  [54, 18],
+  [56, 19],
   c,
-  [56, 37],
+  [58, 45],
   c,
-  [283, 36],
+  [25, 15],
   c,
-  [168, 39],
+  [313, 38],
   c,
-  [449, 35],
+  [196, 40],
   c,
-  [63, 32],
+  [482, 35],
   c,
-  [571, 81],
+  [64, 34],
+  c,
+  [609, 84],
   s,
-  [1, 141],
+  [1, 138],
   c,
-  [340, 16],
+  [343, 16],
   c,
-  [689, 13],
+  [404, 19],
   c,
-  [452, 23],
+  [435, 23],
   c,
-  [726, 14],
+  [367, 37],
   c,
-  [363, 27],
+  [642, 21],
   c,
-  [685, 23],
+  [507, 27],
   c,
-  [43, 15],
+  [68, 15],
   c,
-  [625, 77],
+  [683, 79],
   c,
-  [24, 9],
+  [25, 9],
   c,
-  [662, 38],
+  [721, 39],
   c,
-  [242, 36],
+  [272, 37],
   c,
-  [279, 62],
+  [310, 64],
   c,
-  [74, 49],
+  [76, 50],
   c,
-  [37, 28],
+  [38, 29],
   c,
-  [222, 39],
+  [228, 40],
   c,
-  [37, 74],
+  [38, 76],
   c,
-  [185, 72],
+  [190, 74],
   c,
-  [37, 76],
+  [38, 78],
   c,
-  [171, 7],
+  [176, 7],
   c,
-  [481, 40],
+  [494, 41],
   c,
-  [1334, 26],
+  [1410, 28],
   c,
-  [691, 18],
+  [734, 21],
   c,
-  [709, 21],
+  [1597, 34],
   c,
-  [723, 20],
+  [92, 11],
   c,
-  [647, 9],
-  c,
-  [8, 4]
+  [675, 9]
 ]),
   goto: u([
-  78,
+  83,
   3,
   s,
-  [78, 17],
+  [83, 18],
   4,
-  16,
-  18,
-  34,
-  15,
-  82,
-  28,
-  21,
-  22,
-  25,
-  s,
-  [29, 4, 1],
+  17,
   19,
   36,
-  35,
-  33,
+  16,
+  30,
+  87,
+  29,
+  22,
+  23,
+  26,
   s,
-  [38, 4, 1],
-  83,
-  42,
-  48,
-  53,
-  60,
-  49,
-  45,
-  46,
-  47,
+  [31, 4, 1],
+  20,
+  38,
+  37,
+  35,
+  s,
+  [40, 4, 1],
+  88,
+  44,
+  50,
+  55,
+  62,
   51,
-  52,
+  47,
+  48,
+  49,
+  53,
   54,
-  58,
-  59,
-  33,
+  56,
+  60,
   61,
+  35,
+  63,
   c,
   [14, 13],
   c,
   [13, 13],
-  64,
+  66,
   c,
   [14, 13],
-  66,
+  68,
+  69,
+  70,
   s,
-  [68, 5, 1],
+  [72, 5, 1],
   c,
-  [19, 13],
-  74,
-  75,
+  [21, 13],
+  78,
+  79,
   c,
-  [98, 17],
+  [101, 18],
   c,
-  [32, 13],
+  [33, 13],
   s,
-  [79, 5, 1],
+  [83, 5, 1],
   s,
-  [54, 12],
-  84,
-  s,
-  [54, 8],
-  85,
-  c,
-  [40, 13],
+  [59, 13],
   88,
   s,
-  [95, 5, 1],
-  102,
-  104,
-  61,
-  61,
-  s,
-  [89, 6, 1],
-  100,
-  101,
-  103,
-  s,
-  [61, 16],
-  s,
-  [3, 37],
-  39,
+  [59, 8],
+  89,
   c,
-  [204, 26],
+  [41, 13],
+  92,
+  s,
+  [99, 5, 1],
+  106,
+  108,
+  66,
+  66,
+  s,
+  [93, 6, 1],
+  104,
+  105,
+  107,
+  s,
+  [66, 17],
+  s,
+  [3, 38],
+  41,
+  c,
+  [210, 26],
   c,
   [13, 13],
   s,
-  [26, 37],
-  72,
-  108,
-  109,
-  49,
-  c,
-  [153, 8],
-  s,
-  [49, 3],
-  c,
-  [154, 9],
-  s,
-  [49, 16],
-  50,
-  c,
-  [37, 8],
-  s,
-  [50, 3],
-  c,
-  [37, 9],
-  s,
-  [50, 16],
-  s,
-  [96, 18],
-  111,
-  48,
-  c,
-  [56, 8],
-  s,
-  [48, 3],
-  c,
-  [56, 9],
-  s,
-  [48, 16],
+  [26, 38],
+  76,
   112,
+  113,
+  54,
   c,
-  [37, 8],
-  98,
-  98,
-  c,
-  [36, 9],
+  [156, 8],
   s,
-  [98, 16],
-  114,
-  115,
-  52,
+  [54, 3],
+  c,
+  [157, 9],
+  s,
+  [54, 17],
+  55,
   c,
   [38, 8],
   s,
-  [52, 3],
-  c,
-  [39, 9],
-  s,
-  [52, 16],
-  c,
-  [271, 26],
-  55,
-  c,
-  [63, 8],
-  s,
   [55, 3],
   c,
-  [63, 9],
+  [38, 9],
   s,
-  [55, 16],
-  c,
-  [490, 5],
-  118,
-  c,
-  [491, 25],
-  c,
-  [13, 195],
+  [55, 17],
   s,
-  [6, 12],
-  89,
-  90,
-  6,
-  92,
-  s,
-  [6, 4],
-  103,
-  s,
-  [6, 16],
-  s,
-  [21, 13],
-  90,
-  s,
-  [21, 6],
-  103,
-  s,
-  [21, 16],
-  c,
-  [336, 8],
-  136,
-  c,
-  [334, 9],
-  138,
-  s,
-  [86, 18],
-  140,
-  c,
-  [338, 5],
-  141,
-  c,
-  [338, 12],
-  143,
+  [101, 19],
+  115,
   53,
   c,
   [58, 8],
   s,
   [53, 3],
   c,
+  [58, 9],
+  s,
+  [53, 17],
+  s,
+  [44, 7],
+  116,
+  s,
+  [44, 14],
+  117,
+  118,
+  c,
+  [61, 8],
+  103,
+  103,
+  c,
   [60, 9],
   s,
-  [53, 16],
-  56,
+  [103, 17],
+  120,
+  121,
+  57,
   c,
-  [37, 8],
+  [39, 8],
   s,
-  [56, 3],
+  [57, 3],
   c,
-  [37, 9],
+  [40, 9],
   s,
-  [56, 16],
+  [57, 17],
+  c,
+  [301, 26],
+  60,
+  c,
+  [64, 8],
+  s,
+  [60, 3],
+  c,
+  [64, 9],
+  s,
+  [60, 17],
+  c,
+  [525, 6],
+  124,
+  c,
+  [526, 25],
+  c,
+  [13, 195],
+  s,
+  [6, 12],
+  93,
+  94,
+  6,
+  96,
+  s,
+  [6, 4],
+  107,
+  s,
+  [6, 17],
+  s,
+  [21, 13],
+  94,
+  s,
+  [21, 6],
+  107,
+  s,
+  [21, 17],
+  c,
+  [340, 8],
+  142,
+  c,
+  [338, 9],
+  144,
+  s,
+  [91, 19],
+  146,
+  147,
+  s,
+  [46, 7],
+  148,
+  s,
+  [46, 14],
+  c,
+  [365, 6],
+  149,
+  c,
+  [365, 12],
+  151,
+  58,
+  c,
+  [83, 8],
+  s,
+  [58, 3],
+  c,
+  [85, 9],
+  s,
+  [58, 17],
+  61,
+  c,
+  [38, 8],
+  s,
+  [61, 3],
+  c,
+  [38, 9],
+  s,
+  [61, 17],
   s,
   [5, 3],
   c,
-  [37, 5],
+  [38, 5],
   s,
   [5, 4],
   c,
-  [37, 9],
+  [38, 9],
   s,
-  [5, 16],
+  [5, 17],
   s,
   [7, 13],
-  90,
+  94,
   7,
-  92,
+  96,
   s,
   [7, 4],
-  103,
+  107,
   s,
-  [7, 16],
+  [7, 17],
   s,
   [9, 12],
-  89,
-  90,
+  93,
+  94,
   9,
-  92,
+  96,
   s,
   [9, 4],
-  103,
+  107,
   s,
-  [9, 16],
+  [9, 17],
   s,
   [10, 13],
-  90,
+  94,
   s,
   [10, 6],
-  103,
+  107,
   s,
-  [10, 16],
+  [10, 17],
   s,
   [11, 12],
-  89,
-  90,
+  93,
+  94,
   11,
-  92,
+  96,
   s,
   [11, 4],
-  103,
+  107,
   s,
-  [11, 16],
+  [11, 17],
   s,
   [12, 12],
-  89,
-  90,
+  93,
+  94,
   12,
-  92,
+  96,
   s,
   [12, 4],
-  103,
+  107,
   s,
-  [12, 16],
+  [12, 17],
   s,
   [13, 3],
   c,
-  [222, 5],
+  [228, 5],
   s,
   [13, 4],
   c,
-  [222, 9],
+  [228, 9],
   s,
-  [13, 16],
+  [13, 17],
   s,
   [14, 5],
   c,
-  [37, 3],
+  [38, 3],
   s,
   [14, 4],
   c,
-  [37, 9],
+  [38, 9],
   s,
-  [14, 16],
+  [14, 17],
   s,
   [15, 5],
   c,
-  [37, 3],
+  [38, 3],
   s,
   [15, 4],
   c,
-  [37, 9],
+  [38, 9],
   s,
-  [15, 16],
+  [15, 17],
   s,
   [16, 12],
-  89,
-  90,
+  93,
+  94,
   16,
-  92,
+  96,
   s,
   [16, 4],
-  103,
+  107,
   s,
-  [16, 16],
+  [16, 17],
   s,
   [17, 12],
-  89,
-  90,
+  93,
+  94,
   17,
-  92,
+  96,
   s,
   [17, 4],
-  103,
+  107,
   s,
-  [17, 16],
+  [17, 17],
   s,
   [18, 12],
-  89,
-  90,
+  93,
+  94,
   18,
-  92,
+  96,
   s,
   [18, 4],
-  103,
+  107,
   s,
-  [18, 16],
+  [18, 17],
   s,
   [19, 12],
-  89,
-  90,
+  93,
+  94,
   19,
-  92,
+  96,
   s,
   [19, 4],
+  107,
+  s,
+  [19, 17],
+  s,
+  [20, 5],
+  102,
   103,
   s,
-  [19, 16],
-  s,
-  [20, 5],
-  98,
-  99,
-  s,
   [20, 5],
   c,
-  [185, 9],
+  [190, 9],
   s,
-  [20, 16],
+  [20, 17],
   s,
   [22, 13],
-  90,
+  94,
   s,
-  [22, 23],
+  [22, 24],
   c,
-  [648, 5],
-  146,
+  [666, 6],
+  154,
   c,
-  [648, 12],
+  [666, 12],
+  155,
   c,
-  [18, 5],
-  148,
-  c,
-  [18, 12],
-  150,
-  152,
-  c,
-  [20, 5],
-  153,
+  [20, 6],
+  157,
   c,
   [20, 12],
-  s,
-  [90, 7],
-  155,
-  90,
-  92,
-  92,
+  159,
+  161,
   c,
-  [1513, 5],
-  92,
-  94,
-  94,
-  159
+  [21, 6],
+  162,
+  c,
+  [21, 12],
+  s,
+  [95, 7],
+  164,
+  95,
+  97,
+  97,
+  c,
+  [1596, 5],
+  97,
+  99,
+  99,
+  168
 ])
 }),
 defaultActions: bda({
   idx: u([
   s,
-  [3, 13, 1],
-  23,
+  [3, 14, 1],
   24,
-  26,
+  25,
   27,
+  28,
   s,
-  [29, 4, 1],
-  43,
-  46,
-  50,
+  [31, 4, 1],
+  45,
+  48,
+  52,
   s,
-  [52, 8, 1],
+  [54, 8, 1],
   s,
-  [66, 6, 1],
-  76,
+  [70, 6, 1],
+  80,
   s,
-  [78, 6, 1],
-  104,
+  [82, 6, 1],
   108,
-  110,
   112,
-  115,
+  114,
   118,
-  119,
-  122,
-  136,
-  137,
-  138,
-  s,
-  [140, 4, 1],
+  121,
+  124,
+  125,
+  128,
+  142,
+  143,
+  144,
   146,
-  s,
-  [148, 4, 1],
-  153,
+  147,
+  149,
+  150,
+  151,
+  154,
   155,
-  157,
-  158,
-  159
+  s,
+  [157, 4, 1],
+  162,
+  164,
+  166,
+  167,
+  168
 ]),
   goto: u([
-  80,
+  85,
   1,
-  79,
+  84,
   s,
-  [33, 10, 1],
-  67,
+  [33, 11, 1],
+  72,
+  73,
   68,
-  63,
-  64,
+  69,
   s,
-  [57, 4, 1],
-  100,
+  [62, 4, 1],
+  105,
   4,
   25,
   s,
   [27, 6, 1],
-  43,
-  44,
-  69,
-  70,
+  48,
+  49,
+  74,
+  75,
   s,
-  [102, 4, 1],
-  81,
+  [107, 4, 1],
+  86,
   s,
-  [72, 6, 1],
+  [77, 6, 1],
   24,
-  45,
-  98,
-  71,
+  50,
+  103,
+  76,
   2,
-  62,
-  101,
+  67,
+  106,
   8,
   23,
-  88,
-  84,
-  97,
-  66,
-  99,
-  98,
-  51,
-  46,
-  89,
-  87,
-  85,
-  65,
-  91,
   93,
+  89,
+  102,
+  45,
+  71,
+  104,
+  103,
+  56,
   47,
-  95
+  51,
+  94,
+  92,
+  90,
+  70,
+  96,
+  98,
+  52,
+  100
 ])
 }),
 parseError: function parseError(str, hash, ExceptionClass) {
@@ -2582,7 +2660,7 @@ parse: function parse(input) {
     var TERROR = this.TERROR;
     var EOF = this.EOF;
     var ERROR_RECOVERY_TOKEN_DISCARD_COUNT = (this.options.errorRecoveryTokenDiscardCount | 0) || 3;
-    var NO_ACTION = [0, 160 /* === table.length :: ensures that anyone using this new state will fail dramatically! */];
+    var NO_ACTION = [0, 169 /* === table.length :: ensures that anyone using this new state will fail dramatically! */];
 
     var lexer;
     if (this.__lexer__) {
@@ -4887,7 +4965,7 @@ EOF: 1,
         /* skip whitespace */
         break;
 
-      case 66:
+      case 67:
         /*! Conditions:: INITIAL */
         /*! Rule::       . */
         console.log('', yy_.yytext);
@@ -4911,255 +4989,259 @@ EOF: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       true */
-      3: 32,
+      3: 35,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       false */
-      4: 33,
+      4: 36,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       use */
+      5: 32,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       if */
-      5: 45,
+      6: 47,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       return */
-      6: 36,
+      7: 38,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       class */
-      7: 39,
+      8: 41,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       as */
-      8: 47,
+      9: 33,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       each */
-      9: 46,
-
-      /*! Conditions:: INITIAL */
-      /*! Rule::       for */
       10: 48,
 
       /*! Conditions:: INITIAL */
+      /*! Rule::       for */
+      11: 49,
+
+      /*! Conditions:: INITIAL */
       /*! Rule::       in */
-      11: 'IN',
+      12: 'IN',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       to */
-      12: 51,
+      13: 52,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       : */
-      13: 57,
+      14: 58,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       # */
-      14: 'HASH',
+      15: 'HASH',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \? */
-      15: 'QUESTION',
+      16: 'QUESTION',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       ~ */
-      16: 'TILDE',
+      17: 'TILDE',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       _ */
-      17: 'UNDERSCORE',
+      18: 'UNDERSCORE',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       def */
-      18: 34,
+      19: 34,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       end */
-      19: 35,
+      20: 37,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       not */
-      20: 18,
+      21: 18,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       string */
-      21: 52,
-
-      /*! Conditions:: INITIAL */
-      /*! Rule::       integer */
       22: 53,
 
       /*! Conditions:: INITIAL */
-      /*! Rule::       array */
-      23: 55,
+      /*! Rule::       integer */
+      23: 54,
 
       /*! Conditions:: INITIAL */
-      /*! Rule::       bool */
+      /*! Rule::       array */
       24: 56,
 
       /*! Conditions:: INITIAL */
+      /*! Rule::       bool */
+      25: 57,
+
+      /*! Conditions:: INITIAL */
       /*! Rule::       float */
-      25: 54,
+      26: 55,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       and */
-      26: 20,
-
-      /*! Conditions:: INITIAL */
-      /*! Rule::       && */
       27: 20,
 
       /*! Conditions:: INITIAL */
-      /*! Rule::       or */
-      28: 19,
+      /*! Rule::       && */
+      28: 20,
 
       /*! Conditions:: INITIAL */
-      /*! Rule::       \|\| */
+      /*! Rule::       or */
       29: 19,
 
       /*! Conditions:: INITIAL */
+      /*! Rule::       \|\| */
+      30: 19,
+
+      /*! Conditions:: INITIAL */
       /*! Rule::       public */
-      30: 41,
+      31: 43,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       private */
-      31: 42,
+      32: 44,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       protected */
-      32: 43,
+      33: 45,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       static */
-      33: 44,
+      34: 46,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       println */
-      34: 37,
+      35: 39,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       print */
-      35: 38,
+      36: 40,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       typeof */
-      36: 49,
+      37: 50,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       % */
-      37: 10,
+      38: 10,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       = */
-      38: 40,
+      39: 42,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       == */
-      39: 21,
+      40: 21,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       === */
-      40: 22,
+      41: 22,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \* */
-      41: 5,
+      42: 5,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \/ */
-      42: 6,
+      43: 6,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       - */
-      43: 4,
+      44: 4,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \+ */
-      44: 3,
+      45: 3,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       > */
-      45: 7,
+      46: 7,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       < */
-      46: 8,
+      47: 8,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       >= */
-      47: 25,
+      48: 25,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       <= */
-      48: 26,
+      49: 26,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       != */
-      49: 24,
+      50: 24,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \^ */
-      50: 9,
+      51: 9,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \( */
-      51: 14,
+      52: 14,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \) */
-      52: 15,
+      53: 15,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \[ */
-      53: 12,
+      54: 12,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \] */
-      54: 13,
+      55: 13,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       PI */
-      55: 30,
+      56: 30,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       E */
-      56: 11,
+      57: 11,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       ; */
-      57: 'SEMICOL',
+      58: 'SEMICOL',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \.\. */
-      58: 50,
+      59: 51,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \. */
-      59: 27,
+      60: 27,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       , */
-      60: 58,
+      61: 59,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       {id} */
-      61: 16,
+      62: 16,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       @{id} */
-      62: 17,
+      63: 17,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       "(?:""|[^"])*" */
-      63: 29,
+      64: 29,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       $ */
-      64: 1,
+      65: 1,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       . */
-      65: 'INVALID'
+      66: 'INVALID'
     },
 
     rules: [
@@ -5168,68 +5250,69 @@ EOF: 1,
       /*  2: */  /^(?:\d+(\.\d+)?\b)/,
       /*  3: */  /^(?:true)/,
       /*  4: */  /^(?:false)/,
-      /*  5: */  /^(?:if)/,
-      /*  6: */  /^(?:return)/,
-      /*  7: */  /^(?:class)/,
-      /*  8: */  /^(?:as)/,
-      /*  9: */  /^(?:each)/,
-      /* 10: */  /^(?:for)/,
-      /* 11: */  /^(?:in)/,
-      /* 12: */  /^(?:to)/,
-      /* 13: */  /^(?::)/,
-      /* 14: */  /^(?:#)/,
-      /* 15: */  /^(?:\?)/,
-      /* 16: */  /^(?:~)/,
-      /* 17: */  /^(?:_)/,
-      /* 18: */  /^(?:def)/,
-      /* 19: */  /^(?:end)/,
-      /* 20: */  /^(?:not)/,
-      /* 21: */  /^(?:string)/,
-      /* 22: */  /^(?:integer)/,
-      /* 23: */  /^(?:array)/,
-      /* 24: */  /^(?:bool)/,
-      /* 25: */  /^(?:float)/,
-      /* 26: */  /^(?:and)/,
-      /* 27: */  /^(?:&&)/,
-      /* 28: */  /^(?:or)/,
-      /* 29: */  /^(?:\|\|)/,
-      /* 30: */  /^(?:public)/,
-      /* 31: */  /^(?:private)/,
-      /* 32: */  /^(?:protected)/,
-      /* 33: */  /^(?:static)/,
-      /* 34: */  /^(?:println)/,
-      /* 35: */  /^(?:print)/,
-      /* 36: */  /^(?:typeof)/,
-      /* 37: */  /^(?:%)/,
-      /* 38: */  /^(?:=)/,
-      /* 39: */  /^(?:==)/,
-      /* 40: */  /^(?:===)/,
-      /* 41: */  /^(?:\*)/,
-      /* 42: */  /^(?:\/)/,
-      /* 43: */  /^(?:-)/,
-      /* 44: */  /^(?:\+)/,
-      /* 45: */  /^(?:>)/,
-      /* 46: */  /^(?:<)/,
-      /* 47: */  /^(?:>=)/,
-      /* 48: */  /^(?:<=)/,
-      /* 49: */  /^(?:!=)/,
-      /* 50: */  /^(?:\^)/,
-      /* 51: */  /^(?:\()/,
-      /* 52: */  /^(?:\))/,
-      /* 53: */  /^(?:\[)/,
-      /* 54: */  /^(?:\])/,
-      /* 55: */  /^(?:PI)/,
-      /* 56: */  /^(?:E)/,
-      /* 57: */  /^(?:;)/,
-      /* 58: */  /^(?:\.\.)/,
-      /* 59: */  /^(?:\.)/,
-      /* 60: */  /^(?:,)/,
-      /* 61: */  /^(?:([^\W\d]\w*))/,
-      /* 62: */  /^(?:@([^\W\d]\w*))/,
-      /* 63: */  /^(?:"(?:""|[^"])*")/,
-      /* 64: */  /^(?:$)/,
-      /* 65: */  /^(?:.)/,
-      /* 66: */  /^(?:.)/
+      /*  5: */  /^(?:use)/,
+      /*  6: */  /^(?:if)/,
+      /*  7: */  /^(?:return)/,
+      /*  8: */  /^(?:class)/,
+      /*  9: */  /^(?:as)/,
+      /* 10: */  /^(?:each)/,
+      /* 11: */  /^(?:for)/,
+      /* 12: */  /^(?:in)/,
+      /* 13: */  /^(?:to)/,
+      /* 14: */  /^(?::)/,
+      /* 15: */  /^(?:#)/,
+      /* 16: */  /^(?:\?)/,
+      /* 17: */  /^(?:~)/,
+      /* 18: */  /^(?:_)/,
+      /* 19: */  /^(?:def)/,
+      /* 20: */  /^(?:end)/,
+      /* 21: */  /^(?:not)/,
+      /* 22: */  /^(?:string)/,
+      /* 23: */  /^(?:integer)/,
+      /* 24: */  /^(?:array)/,
+      /* 25: */  /^(?:bool)/,
+      /* 26: */  /^(?:float)/,
+      /* 27: */  /^(?:and)/,
+      /* 28: */  /^(?:&&)/,
+      /* 29: */  /^(?:or)/,
+      /* 30: */  /^(?:\|\|)/,
+      /* 31: */  /^(?:public)/,
+      /* 32: */  /^(?:private)/,
+      /* 33: */  /^(?:protected)/,
+      /* 34: */  /^(?:static)/,
+      /* 35: */  /^(?:println)/,
+      /* 36: */  /^(?:print)/,
+      /* 37: */  /^(?:typeof)/,
+      /* 38: */  /^(?:%)/,
+      /* 39: */  /^(?:=)/,
+      /* 40: */  /^(?:==)/,
+      /* 41: */  /^(?:===)/,
+      /* 42: */  /^(?:\*)/,
+      /* 43: */  /^(?:\/)/,
+      /* 44: */  /^(?:-)/,
+      /* 45: */  /^(?:\+)/,
+      /* 46: */  /^(?:>)/,
+      /* 47: */  /^(?:<)/,
+      /* 48: */  /^(?:>=)/,
+      /* 49: */  /^(?:<=)/,
+      /* 50: */  /^(?:!=)/,
+      /* 51: */  /^(?:\^)/,
+      /* 52: */  /^(?:\()/,
+      /* 53: */  /^(?:\))/,
+      /* 54: */  /^(?:\[)/,
+      /* 55: */  /^(?:\])/,
+      /* 56: */  /^(?:PI)/,
+      /* 57: */  /^(?:E)/,
+      /* 58: */  /^(?:;)/,
+      /* 59: */  /^(?:\.\.)/,
+      /* 60: */  /^(?:\.)/,
+      /* 61: */  /^(?:,)/,
+      /* 62: */  /^(?:([^\W\d]\w*))/,
+      /* 63: */  /^(?:@([^\W\d]\w*))/,
+      /* 64: */  /^(?:"(?:""|[^"])*")/,
+      /* 65: */  /^(?:$)/,
+      /* 66: */  /^(?:.)/,
+      /* 67: */  /^(?:.)/
     ],
 
     conditions: {
@@ -5301,7 +5384,8 @@ EOF: 1,
           63,
           64,
           65,
-          66
+          66,
+          67
         ],
 
         inclusive: true

@@ -19,6 +19,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "false"					return 'FALSE'
 
 /* reserved words */
+"use"					return 'USE'
 "if"					return 'IF'
 "return"				return 'RETURN'
 "class"					return 'CLASS'
@@ -211,8 +212,20 @@ SENTENCE
 	| LOOP
 	| CAST
 	| DEF_RETURN
+	| DEF_USE
 	| COMMENT
 		{ $$ = `` }
+;
+
+DEF_USE
+	: USE STRING[package]
+		{ $$ = seg.use($package); }
+	| USE STRING[package] AS ID
+		{ $$ = seg.use($package, $ID); }
+	| USE DEF STRING[package]
+		{ $$ = seg.use_function($package); }
+	| USE DEF STRING[package] AS ID
+		{ $$ = seg.use_function($package, $ID); }
 ;
 
 /* variables */

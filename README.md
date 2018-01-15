@@ -2,6 +2,12 @@
 
 __rp__ is an abstraction of the programming language php. It has clean syntax, free of some repetitive php elements _(such as $)_, including support for many php functions and segments _(called snippets)_ that help you create files with less code content.
 
+## Features of rp
+
+- Simple Syntax
+- Normal Object-oriented Features (e.g. class, method calls)
+- Highly Portable (works on many Unix-like/POSIX compatible platforms as well as Windows, macOS, Haiku, etc.), i. e. all platforms supported by NodeJS.
+
 ## Resources
 
 - [Language Reference](#language-reference)
@@ -15,6 +21,7 @@ __rp__ is an abstraction of the programming language php. It has clean syntax, f
   - [Classes](#classes)
     - [Attributes](#attributes)
   - [Loops](#loops)
+  - [Imports](#imports)
   - [Function Calls & Snippets code](#function-calls--snippets-code)
 - [Development](#development)
 - [Test](#test)
@@ -33,7 +40,7 @@ _The equivalent in PHP is:_
 
 ```php
 echo "abc" . PHP_EOL;
-echo 2*4;
+echo 8;
 ```
 
 ### Declare variable
@@ -221,6 +228,26 @@ _The equivalent in PHP is:_
 foreach ($abc as $x) {
     echo "Hello" . $x;
 }
+```
+
+### Imports
+
+The packet import has a pattern similar to php; `def` instead of `function`.
+
+```py
+use "My\Full\Namespace"
+use "My\Full\Namespace" as Namespace
+use def "My\Full\Namespace"
+use def "My\Full\Namespace" as Namespace
+```
+
+_The equivalent in PHP is:_
+
+```php
+use My\Full\Namespace;
+use My\Full\Namespace as Namespace;
+use function My\Full\Namespace;
+use function My\Full\Namespace as Namespace;
 ```
 
 ### Function Calls & Snippets code

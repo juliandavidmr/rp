@@ -17,6 +17,11 @@ Boolean.parse = function (str) {
     }
 };
 
+String.prototype.replaceAll = function (search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
 module.exports = {
     getType: function (e) {
         return `gettype(${e})`;
@@ -128,5 +133,18 @@ module.exports = {
             return op('||');
         }
         return `${a} ${ value } ${b}`;
+    },
+    /** use */
+    use: function (package, _as) {
+        package = String(package).replaceAll('"', '');
+        return !_as ? `use ${package};` : `use ${package} as ${_as};`;
+    },
+    use_function: function (package, _as) {
+        package = String(package).replaceAll('"', '');
+        return !_as ? `use function ${package};` : `use function ${package} as ${_as};`;
+    },
+    use_const: function (package, _as) {
+        package = String(package).replaceAll('"', '');
+        return !_as ? `use const ${package};` : `use const ${package} as ${_as};`;
     }
 }

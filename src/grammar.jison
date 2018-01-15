@@ -213,6 +213,7 @@ SENTENCE
 	| CAST
 	| DEF_RETURN
 	| DEF_USE
+	| DEF_CALL_FUNCTION
 	| COMMENT
 		{ $$ = `` }
 ;
@@ -258,6 +259,19 @@ DEF_ARGUMENT
 DEF_RETURN
 	: RETURN e
 		{ $$ = seg.return($e); }
+;
+
+// defines input argument.
+ARGUMENT_CALL
+	: ID
+;
+
+ARGUMENTS_CALL
+	: ARGUMENT_CALL COMMA?
+;
+
+DEF_CALL_FUNCTION
+	: ID PAR_OPEN ARGUMENTS_CALL* PAR_CLOSE
 ;
 
 ECHO

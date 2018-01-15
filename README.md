@@ -7,27 +7,33 @@ __rp__ is an abstraction of the programming language php. It has clean syntax, f
 - Simple Syntax
 - Normal Object-oriented Features (e.g. class, method calls)
 - Highly Portable (works on many Unix-like/POSIX compatible platforms as well as Windows, macOS, Haiku, etc.), i. e. all platforms supported by NodeJS.
+- Fast compilation.
 
 ## Resources
 
 - [Language Reference](#language-reference)
-  - [Print message](#print-message)
-  - [Declare variable](#declare-variable)
+  - [Generic](#generic)
+    - [Imports](#imports)
+    - [Declare variable](#declare-variable)
+    - [Print message](#print-message)
+    - [Types](#types)
   - [Functions](#functions)
     - [Arguments](#arguments)
-  - [Types](#types)
-  - [Conditions](#conditions)
+    - [Function Calls & Snippets code](#function-calls--snippets-code)
+  - [Flow controls](#flow-controls)
+    - [If](#if)
+    - [Loops](#loops)
   - [Comments](#comments)
   - [Classes](#classes)
     - [Attributes](#attributes)
-  - [Loops](#loops)
-  - [Imports](#imports)
-  - [Function Calls & Snippets code](#function-calls--snippets-code)
 - [Development](#development)
 - [Test](#test)
 - [Examples](./examples)
 
 ## Language Reference
+
+rp detects and solves basic mathematical expressions,
+thus shortening the resulting source code in php.
 
 ### Print message
 
@@ -43,6 +49,8 @@ echo "abc" . PHP_EOL;
 echo 8;
 ```
 
+_Go to [resources](#resources)_
+
 ### Declare variable
 
 ```ruby
@@ -54,6 +62,8 @@ _The equivalent in PHP is:_
 ```php
 $abc = 2;
 ```
+
+_Go to [resources](#resources)_
 
 ### Functions
 
@@ -75,6 +85,8 @@ function hello(){
 }
 ```
 
+_Go to [resources](#resources)_
+
 #### Arguments
 
 ```rb
@@ -91,6 +103,8 @@ function hello(string $msg){
 }
 ```
 
+_Go to [resources](#resources)_
+
 ### Types
 
 The types of variables available in __rp__ are identical to php.
@@ -102,7 +116,11 @@ The types of variables available in __rp__ are identical to php.
 | string      | string        |
 | array       | array         |
 
-### Conditions
+_Go to [resources](#resources)_
+
+### Flow controls
+
+#### If
 
 ```ruby
 if abc
@@ -118,6 +136,8 @@ if($abc) {
 }
 ```
 
+_Go to [resources](#resources)_
+
 ### Comments
 
 The definition of comments is the same as in php, except comments with the symbol `#`.
@@ -129,6 +149,8 @@ The definition of comments is the same as in php, except comments with the symbo
 * Another longer comment
 */
 ```
+
+_Go to [resources](#resources)_
 
 ### Classes
 
@@ -166,9 +188,11 @@ class database extends mysqli {
 }
 ```
 
+_Go to [resources](#resources)_
+
 #### Attributes
 
-The `@` character is used to define or retrieve an object from a class. 
+The `@` character is used to define or retrieve an object from a class.
 
 >Note the attribute __`name`__ in the example here:
 
@@ -196,6 +220,8 @@ class Pet {
 }
 ```
 
+_Go to [resources](#resources)_
+
 ### Loops
 
 #### Basic loop
@@ -214,6 +240,8 @@ for ($__index__ = 0; $__index__ <= 10; $__index__++) {
 }
 ```
 
+_Go to [resources](#resources)_
+
 ### Each
 
 ```t
@@ -230,7 +258,11 @@ foreach ($abc as $x) {
 }
 ```
 
-### Imports
+_Go to [resources](#resources)_
+
+### Generic
+
+#### Imports
 
 The packet import has a pattern similar to php; `def` instead of `function`.
 
@@ -249,6 +281,8 @@ use My\Full\Namespace as Namespace;
 use function My\Full\Namespace;
 use function My\Full\Namespace as Namespace;
 ```
+
+_Go to [resources](#resources)_
 
 ### Function Calls & Snippets code
 
@@ -288,7 +322,7 @@ _Remember to install the npm packages: `npm install` or `yarn`_
 
 - [ ] Arrays
 - [ ] Inheritance of multiple classes
-- [ ] 'implements' function
+- [ ] 'implements'
 - [ ] Special conditions, as well as coffeescript...
 - [ ] Access to PHP's own functions
 - [ ] [CLI](https://github.com/juliandavidmr/rp/issues/4)

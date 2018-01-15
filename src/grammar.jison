@@ -19,6 +19,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "false"					return 'FALSE'
 
 /* reserved words */
+"if"					return 'IF'
 "return"				return 'RETURN'
 "class"					return 'CLASS'
 "as"					return 'AS'
@@ -58,13 +59,10 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "println"				return 'PRINTLN'
 "print"					return 'PRINT'
 
-/* conditons */
-"if"					return 'IF'
-
 /* snippets */
 "typeof"				return "TYPEOF"
 
-/*  */
+/* any */
 "%"						return '%'
 "="						return 'ASSIGN'
 "=="					return 'EQUAL'
@@ -90,7 +88,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 '.'						return 'DOT'
 ','						return 'COMMA'
 {id}					return 'ID'
-\@{id}					return 'ATTR'
+@{id}					return 'ATTR'
 \"(?:\"\"|[^"])*\"		return 'STRING'
 
 <<EOF>>					return 'EOF'
@@ -107,6 +105,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 %left '+' '-'
 %left '*' '/'
 %left '^'
+%left NOT
 %left '>' '<' '>=' '<=' '<>' EQUAL '!='
 %left 'NOT'
 %left 'AND' 'OR'
@@ -115,7 +114,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 %left IF
 %left DOT
 %left DOT2
-%left TYPEOF
+%left AND
 
 %start syntax
 
@@ -134,67 +133,35 @@ e
 	| ATTR
 		{ $$ = '$this->$' + $ATTR.toString().substring(1, $ATTR.length); }
 	| e '+' e
-		{
-			$$ = trans.operation($1, $3, '+');			
-		}
-	| 'NOT' e
-		{
-			if (! isNaN($e)) {
-				$$ = !$2;
-			} else {
-				$$ = `!${ $2 }`;
-			}
-		}
+		{ $$ = trans.operation($1, $3, '+'); }
+	| NOT e
+		{ $$ = seg.not($e); }
 	| e OR e
 		{ $$ = $1 + '||' + $3;}
 	| e AND e
-		{
-			$$ = trans.operation($1, $3, '&&');			
-		}
+		{ $$ = trans.operation($1, $3, '&&'); }
 	| e EQUAL e
-		{
-			$$ = trans.operation($1, $3, '==');
-		}
+		{ $$ = trans.operation($1, $3, '=='); }
 	| e IDENTICAL e
-		{
-			$$ = trans.operation($1, $3, '===');
-		}
+		{ $$ = trans.operation($1, $3, '==='); }
 	| e '<>' e
-		{
-			$$ = trans.operation($1, $3, '!=');
-		}
+		{ $$ = trans.operation($1, $3, '!='); }
 	| e '!=' e
-		{
-			$$ = trans.operation($1, $3, '!=');
-		}
+		{ $$ = trans.operation($1, $3, '!='); }
 	| e '-' e
-		{
-			$$ = trans.operation($1, $3, '-');
-		}
+		{ $$ = trans.operation($1, $3, '-'); }
 	| e '*' e
-		{			
-			$$ = trans.operation($1, $3, '*');
-		}
+		{ $$ = trans.operation($1, $3, '*'); }
 	| e '/' e
-		{
-			$$ = trans.operation($1, $3, '/');
-		}
+		{ $$ = trans.operation($1, $3, '/'); }
 	| e '>' e
-		{			
-			$$ = trans.operation($1, $3, '>');
-		}
+		{ $$ = trans.operation($1, $3, '>'); }
 	| e '<' e
-		{
-			$$ = trans.operation($1, $3, '<');
-		}
+		{ $$ = trans.operation($1, $3, '<'); }
 	| e '>=' e
-		{
-			$$ = trans.operation($1, $3, '>=');
-		}
+		{ $$ = trans.operation($1, $3, '>='); }
 	| e '<=' e
-		{
-			$$ = trans.operation($1, $3, '<=');
-		}
+		{ $$ = trans.operation($1, $3, '<='); }
 	| e '^' e
 		{
 			if (trans.isOperable($1, $3)) {
@@ -208,9 +175,9 @@ e
 			$$ = -$2;
 		}
 	| e DOT e
-		{ $$ = $1 + ' . ' + $3;}
+		{ $$ = $1 + ' . ' + $3; }
 	| PAR_OPEN e PAR_CLOSE
-		{ $$ = $e;}
+		{ $$ = $e; }
 	| e '%'
 		{
 			if (trans.isOperable($1, 0)) {

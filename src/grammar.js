@@ -1042,11 +1042,7 @@ case 5:
 case 6:
     /*! Production::    e : NOT e */
 
-    if (! isNaN(yyvstack[yysp])) {
-        this.$ = !yyvstack[yysp];
-    } else {
-        this.$ = `!${ yyvstack[yysp] }`;
-    }
+    this.$ = seg.not(yyvstack[yysp]);
     break;
 
 case 7:
@@ -1533,10 +1529,12 @@ table: bt({
   37,
   c,
   [40, 3],
-  s,
-  [37, 15],
   c,
-  [77, 4],
+  [4, 3],
+  s,
+  [37, 13],
+  c,
+  [77, 3],
   34,
   c,
   [71, 4],
@@ -2010,9 +2008,11 @@ table: bt({
   c,
   [689, 13],
   c,
-  [459, 30],
+  [452, 23],
   c,
-  [363, 34],
+  [726, 14],
+  c,
+  [363, 27],
   c,
   [685, 23],
   c,
@@ -2022,19 +2022,17 @@ table: bt({
   c,
   [24, 9],
   c,
-  [662, 40],
+  [662, 38],
   c,
-  [242, 37],
+  [242, 36],
   c,
-  [37, 34],
-  c,
-  [316, 62],
+  [279, 62],
   c,
   [74, 49],
   c,
   [37, 28],
   c,
-  [259, 39],
+  [222, 39],
   c,
   [37, 74],
   c,
@@ -2044,7 +2042,11 @@ table: bt({
   c,
   [171, 7],
   c,
-  [986, 47],
+  [481, 40],
+  c,
+  [1334, 26],
+  c,
+  [691, 18],
   c,
   [709, 21],
   c,
@@ -2227,7 +2229,10 @@ table: bt({
   s,
   [6, 16],
   s,
-  [21, 20],
+  [21, 13],
+  90,
+  s,
+  [21, 6],
   103,
   s,
   [21, 16],
@@ -2275,21 +2280,15 @@ table: bt({
   s,
   [5, 16],
   s,
-  [7, 15],
+  [7, 13],
+  90,
+  7,
   92,
   s,
   [7, 4],
   103,
   s,
   [7, 16],
-  s,
-  [8, 15],
-  92,
-  s,
-  [8, 4],
-  103,
-  s,
-  [8, 16],
   s,
   [9, 12],
   89,
@@ -2302,7 +2301,10 @@ table: bt({
   s,
   [9, 16],
   s,
-  [10, 20],
+  [10, 13],
+  90,
+  s,
+  [10, 6],
   103,
   s,
   [10, 16],
@@ -2331,11 +2333,11 @@ table: bt({
   s,
   [13, 3],
   c,
-  [259, 5],
+  [222, 5],
   s,
   [13, 4],
   c,
-  [259, 9],
+  [222, 9],
   s,
   [13, 16],
   s,
@@ -2412,6 +2414,11 @@ table: bt({
   [185, 9],
   s,
   [20, 16],
+  s,
+  [22, 13],
+  90,
+  s,
+  [22, 23],
   c,
   [648, 5],
   146,
@@ -2470,8 +2477,10 @@ defaultActions: bda({
   115,
   118,
   119,
-  s,
-  [135, 4, 1],
+  122,
+  136,
+  137,
+  138,
   s,
   [140, 4, 1],
   146,
@@ -2516,7 +2525,7 @@ defaultActions: bda({
   2,
   62,
   101,
-  22,
+  8,
   23,
   88,
   84,
@@ -4909,128 +4918,128 @@ EOF: 1,
       4: 33,
 
       /*! Conditions:: INITIAL */
+      /*! Rule::       if */
+      5: 45,
+
+      /*! Conditions:: INITIAL */
       /*! Rule::       return */
-      5: 36,
+      6: 36,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       class */
-      6: 39,
+      7: 39,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       as */
-      7: 47,
+      8: 47,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       each */
-      8: 46,
+      9: 46,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       for */
-      9: 48,
+      10: 48,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       in */
-      10: 'IN',
+      11: 'IN',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       to */
-      11: 51,
+      12: 51,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       : */
-      12: 57,
+      13: 57,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       # */
-      13: 'HASH',
+      14: 'HASH',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       \? */
-      14: 'QUESTION',
+      15: 'QUESTION',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       ~ */
-      15: 'TILDE',
+      16: 'TILDE',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       _ */
-      16: 'UNDERSCORE',
+      17: 'UNDERSCORE',
 
       /*! Conditions:: INITIAL */
       /*! Rule::       def */
-      17: 34,
+      18: 34,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       end */
-      18: 35,
+      19: 35,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       not */
-      19: 18,
+      20: 18,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       string */
-      20: 52,
+      21: 52,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       integer */
-      21: 53,
+      22: 53,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       array */
-      22: 55,
+      23: 55,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       bool */
-      23: 56,
+      24: 56,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       float */
-      24: 54,
+      25: 54,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       and */
-      25: 20,
-
-      /*! Conditions:: INITIAL */
-      /*! Rule::       && */
       26: 20,
 
       /*! Conditions:: INITIAL */
-      /*! Rule::       or */
-      27: 19,
+      /*! Rule::       && */
+      27: 20,
 
       /*! Conditions:: INITIAL */
-      /*! Rule::       \|\| */
+      /*! Rule::       or */
       28: 19,
 
       /*! Conditions:: INITIAL */
+      /*! Rule::       \|\| */
+      29: 19,
+
+      /*! Conditions:: INITIAL */
       /*! Rule::       public */
-      29: 41,
+      30: 41,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       private */
-      30: 42,
+      31: 42,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       protected */
-      31: 43,
+      32: 43,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       static */
-      32: 44,
+      33: 44,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       println */
-      33: 37,
+      34: 37,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       print */
-      34: 38,
-
-      /*! Conditions:: INITIAL */
-      /*! Rule::       if */
-      35: 45,
+      35: 38,
 
       /*! Conditions:: INITIAL */
       /*! Rule::       typeof */
@@ -5159,37 +5168,37 @@ EOF: 1,
       /*  2: */  /^(?:\d+(\.\d+)?\b)/,
       /*  3: */  /^(?:true)/,
       /*  4: */  /^(?:false)/,
-      /*  5: */  /^(?:return)/,
-      /*  6: */  /^(?:class)/,
-      /*  7: */  /^(?:as)/,
-      /*  8: */  /^(?:each)/,
-      /*  9: */  /^(?:for)/,
-      /* 10: */  /^(?:in)/,
-      /* 11: */  /^(?:to)/,
-      /* 12: */  /^(?::)/,
-      /* 13: */  /^(?:#)/,
-      /* 14: */  /^(?:\?)/,
-      /* 15: */  /^(?:~)/,
-      /* 16: */  /^(?:_)/,
-      /* 17: */  /^(?:def)/,
-      /* 18: */  /^(?:end)/,
-      /* 19: */  /^(?:not)/,
-      /* 20: */  /^(?:string)/,
-      /* 21: */  /^(?:integer)/,
-      /* 22: */  /^(?:array)/,
-      /* 23: */  /^(?:bool)/,
-      /* 24: */  /^(?:float)/,
-      /* 25: */  /^(?:and)/,
-      /* 26: */  /^(?:&&)/,
-      /* 27: */  /^(?:or)/,
-      /* 28: */  /^(?:\|\|)/,
-      /* 29: */  /^(?:public)/,
-      /* 30: */  /^(?:private)/,
-      /* 31: */  /^(?:protected)/,
-      /* 32: */  /^(?:static)/,
-      /* 33: */  /^(?:println)/,
-      /* 34: */  /^(?:print)/,
-      /* 35: */  /^(?:if)/,
+      /*  5: */  /^(?:if)/,
+      /*  6: */  /^(?:return)/,
+      /*  7: */  /^(?:class)/,
+      /*  8: */  /^(?:as)/,
+      /*  9: */  /^(?:each)/,
+      /* 10: */  /^(?:for)/,
+      /* 11: */  /^(?:in)/,
+      /* 12: */  /^(?:to)/,
+      /* 13: */  /^(?::)/,
+      /* 14: */  /^(?:#)/,
+      /* 15: */  /^(?:\?)/,
+      /* 16: */  /^(?:~)/,
+      /* 17: */  /^(?:_)/,
+      /* 18: */  /^(?:def)/,
+      /* 19: */  /^(?:end)/,
+      /* 20: */  /^(?:not)/,
+      /* 21: */  /^(?:string)/,
+      /* 22: */  /^(?:integer)/,
+      /* 23: */  /^(?:array)/,
+      /* 24: */  /^(?:bool)/,
+      /* 25: */  /^(?:float)/,
+      /* 26: */  /^(?:and)/,
+      /* 27: */  /^(?:&&)/,
+      /* 28: */  /^(?:or)/,
+      /* 29: */  /^(?:\|\|)/,
+      /* 30: */  /^(?:public)/,
+      /* 31: */  /^(?:private)/,
+      /* 32: */  /^(?:protected)/,
+      /* 33: */  /^(?:static)/,
+      /* 34: */  /^(?:println)/,
+      /* 35: */  /^(?:print)/,
       /* 36: */  /^(?:typeof)/,
       /* 37: */  /^(?:%)/,
       /* 38: */  /^(?:=)/,

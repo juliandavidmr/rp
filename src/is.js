@@ -6,7 +6,7 @@ module.exports = {
     number: function (value) {
         return toType(value) == 'number' || /[0-9]$/.test(value);
     },
-    bool: function (params) {
-        return toType(params) == 'boolean' || /true|false$/.test(params);
+    bool: function (param) {
+        return toType(param) == 'boolean' || /true|false$/.test(param);
     }
 }

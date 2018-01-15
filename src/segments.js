@@ -1,5 +1,21 @@
 const u = require('./util')
 const trans = require('./transpile')
+const is = require('./is')
+
+Boolean.parse = function (str) {
+    str = String(str);
+    /* if (typeof str !== 'string') {
+        throw new Error(`Boolean.parse: Cannot convert ${typeof st} to boolean.`);        
+    } */
+    switch (str.toLowerCase()) {
+        case "true":
+            return true;
+        case "false":
+            return false;
+        default:
+            throw new Error("Boolean.parse: Cannot convert string to boolean.");
+    }
+};
 
 module.exports = {
     getType: function (e) {
@@ -84,5 +100,33 @@ module.exports = {
         } else {
             return `class ${ name } { ${ content } }`;
         }
+    },
+    not: function (value) {
+        if (is.bool(value)) {
+            return !Boolean.parse(value);
+        } else if (is.number(value)) {
+            return !Number.parseFloat(value);
+        }
+        return `!${ value }`;
+    },
+    and: function (a, b) {
+        function op(logic) {
+            switch (logic) {
+                case '&&':
+                    return a && b;
+                case '||':
+                    return a || b;
+            }
+        }
+        if (is.bool(a) && is.bool(b)) {
+            a = Boolean.parse(a);
+            b = Boolean.parse(b);
+            return op('&&');
+        } else if (is.number(a) && is.number(b)) {
+            a = Number.parseFloat(a);
+            b = Number.parseFloat(b);
+            return op('||');
+        }
+        return `${a} ${ value } ${b}`;
     }
 }

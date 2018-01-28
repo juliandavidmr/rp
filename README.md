@@ -11,6 +11,10 @@ __rp__ is an abstraction of the programming language php. It has clean syntax, f
 
 ## Resources
 
+- [Install](#install)
+- [Development](#development)
+- [Test](#test)
+- [Examples](./examples)
 - [Language Reference](#language-reference)
   - [Generic](#generic)
     - [Imports](#imports)
@@ -27,16 +31,52 @@ __rp__ is an abstraction of the programming language php. It has clean syntax, f
   - [Comments](#comments)
   - [Classes](#classes)
     - [Attributes](#attributes)
-- [Development](#development)
-- [Test](#test)
-- [Examples](./examples)
+  - [Segments](#segments)
 
 ## Language Reference
 
 rp detects and solves basic mathematical expressions,
 thus shortening the resulting source code in php.
 
-### Print message
+### Generic
+
+#### Imports
+
+The packet import has a pattern similar to php; `def` instead of `function`.
+
+```py
+use "My\Full\Namespace"
+use "My\Full\Namespace" as Namespace
+use def "My\Full\Namespace"
+use def "My\Full\Namespace" as Namespace
+```
+
+_The equivalent in PHP is:_
+
+```php
+use My\Full\Namespace;
+use My\Full\Namespace as Namespace;
+use function My\Full\Namespace;
+use function My\Full\Namespace as Namespace;
+```
+
+_Go to [resources](#resources)_
+
+#### Declare variable
+
+```ruby
+abc = 2
+```
+
+_The equivalent in PHP is:_
+
+```php
+$abc = 2;
+```
+
+_Go to [resources](#resources)_
+
+#### Print message
 
 ```python
 println "abc"
@@ -52,16 +92,43 @@ echo 8;
 
 _Go to [resources](#resources)_
 
-### Declare variable
+#### Types
 
-```ruby
-abc = 2
+The types of variables available in __rp__ are identical to php.
+
+|      rp     |       php     |
+|-------------|---------------|
+| integer     | integer       |
+| float       | float         |
+| string      | string        |
+| array       | array         |
+
+_Go to [resources](#resources)_
+
+#### Try catch
+
+You can quickly create a try catch without specifying the exception type. By default __rp__ will assign the generic exception for PHP, called `Exception`.
+
+```rb
+try
+    print "Hello"
+    /* Something with errors */
+catch
+    print "Error" . e
+end
 ```
+
+> Note that the variable `e` can be called from rp without it being visually defined since in PHP it is.
 
 _The equivalent in PHP is:_
 
 ```php
-$abc = 2;
+try {
+    echo "Hello";
+    /* Something with errors */
+} catch (Exception $e) {
+    echo "Error" . $e;
+}
 ```
 
 _Go to [resources](#resources)_
@@ -106,47 +173,6 @@ function hello(string $msg){
 
 _Go to [resources](#resources)_
 
-### Types
-
-The types of variables available in __rp__ are identical to php.
-
-|      rp     |       php     |
-|-------------|---------------|
-| integer     | integer       |
-| float       | float         |
-| string      | string        |
-| array       | array         |
-
-_Go to [resources](#resources)_
-
-### Try catch
-
-You can quickly create a try catch without specifying the exception type. By default __rp__ will assign the generic exception for PHP, called `Exception`.
-
-```rb
-try
-    print "Hello"
-    /* Something with errors */
-catch
-    print "Error" . e
-end
-```
-
-> Note that the variable `e` can be called from rp without it being visually defined since in PHP it is.
-
-_The equivalent in PHP is:_
-
-```php
-try {
-    echo "Hello";
-    /* Something with errors */
-} catch (Exception $e) {
-    echo "Error" . $e;
-}
-```
-
-_Go to [resources](#resources)_
-
 ### Flow controls
 
 #### If
@@ -162,6 +188,42 @@ _The equivalent in PHP is:_
 ```php
 if($abc) {
     echo "This is " . $abc;
+}
+```
+
+_Go to [resources](#resources)_
+
+#### Basic loop
+
+```ruby
+for 10
+    println "This is repeated 10 times."
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+for ($__index__ = 0; $__index__ <= 10; $__index__++) {
+    echo "This is repeated 10 times." . PHP_EOL;
+}
+```
+
+_Go to [resources](#resources)_
+
+### Each
+
+```t
+each abc as x
+    print "Hello" . x
+end
+```
+
+_The equivalent in PHP is:_
+
+```php
+foreach ($abc as $x) {
+    echo "Hello" . $x;
 }
 ```
 
@@ -251,74 +313,16 @@ class Pet {
 
 _Go to [resources](#resources)_
 
-### Loops
-
-#### Basic loop
-
-```ruby
-for 10
-    println "This is repeated 10 times."
-end
-```
-
-_The equivalent in PHP is:_
-
-```php
-for ($__index__ = 0; $__index__ <= 10; $__index__++) {
-    echo "This is repeated 10 times." . PHP_EOL;
-}
-```
-
-_Go to [resources](#resources)_
-
-### Each
-
-```t
-each abc as x
-    print "Hello" . x
-end
-```
-
-_The equivalent in PHP is:_
-
-```php
-foreach ($abc as $x) {
-    echo "Hello" . $x;
-}
-```
-
-_Go to [resources](#resources)_
-
-### Generic
-
-#### Imports
-
-The packet import has a pattern similar to php; `def` instead of `function`.
-
-```py
-use "My\Full\Namespace"
-use "My\Full\Namespace" as Namespace
-use def "My\Full\Namespace"
-use def "My\Full\Namespace" as Namespace
-```
-
-_The equivalent in PHP is:_
-
-```php
-use My\Full\Namespace;
-use My\Full\Namespace as Namespace;
-use function My\Full\Namespace;
-use function My\Full\Namespace as Namespace;
-```
-
-_Go to [resources](#resources)_
-
 ### Segments
 
 |   Description                         |      **rp**       |                 php               |
 |---------------------------------------|-------------------|-----------------------------------|
 | get the type of data                  | `typeof value`    | `gettype($value)`                 |
 | returns a number vector from a range  | `1..6`            | `array(1,2,3,4,5,6)`              |
+
+## Install
+
+_TODO_: Write doc
 
 ## Development
 

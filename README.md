@@ -2,7 +2,7 @@
 
 __rp__ is an abstraction of the programming language php. It has clean syntax, free of some repetitive php elements _(such as $)_, including support for many php functions and segments _(called snippets)_ that help you create files with less code content.
 
-## Features of rp
+## Features
 
 - Simple Syntax
 - Normal Object-oriented Features (e.g. class, method calls)
@@ -17,9 +17,10 @@ __rp__ is an abstraction of the programming language php. It has clean syntax, f
     - [Declare variable](#declare-variable)
     - [Print message](#print-message)
     - [Types](#types)
+    - [Try catch](#try-catch)
   - [Functions](#functions)
     - [Arguments](#arguments)
-    - [Function Calls & Snippets code](#function-calls--snippets-code)
+    - [Segments](#segments)
   - [Flow controls](#flow-controls)
     - [If](#if)
     - [Loops](#loops)
@@ -115,6 +116,34 @@ The types of variables available in __rp__ are identical to php.
 | float       | float         |
 | string      | string        |
 | array       | array         |
+
+_Go to [resources](#resources)_
+
+### Try catch
+
+You can quickly create a try catch without specifying the exception type. By default __rp__ will assign the generic exception for PHP, called `Exception`.
+
+```rb
+try
+    print "Hello"
+    /* Something with errors */
+catch
+    print "Error" . e
+end
+```
+
+> Note that the variable `e` can be called from rp without it being visually defined since in PHP it is.
+
+_The equivalent in PHP is:_
+
+```php
+try {
+    echo "Hello";
+    /* Something with errors */
+} catch (Exception $e) {
+    echo "Error" . $e;
+}
+```
 
 _Go to [resources](#resources)_
 
@@ -284,7 +313,7 @@ use function My\Full\Namespace as Namespace;
 
 _Go to [resources](#resources)_
 
-### Function Calls & Snippets code
+### Segments
 
 |   Description                         |      **rp**       |                 php               |
 |---------------------------------------|-------------------|-----------------------------------|

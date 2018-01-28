@@ -146,5 +146,8 @@ module.exports = {
     use_const: function (package, _as) {
         package = String(package).replaceAll('"', '');
         return !_as ? `use const ${package};` : `use const ${package} as ${_as};`;
+    },
+    try_catch: function (sentence_try, sentence_catch) {
+        return `try { ${sentence_try} } catch (Exception $e) { ${sentence_catch} }`
     }
 }

@@ -19,6 +19,8 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "false"					return 'FALSE'
 
 /* reserved words */
+"try"					return 'TRY'
+"catch"					return 'CATCH'
 "use"					return 'USE'
 "if"					return 'IF'
 "return"				return 'RETURN'
@@ -116,6 +118,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 %left DOT
 %left DOT2
 %left AND
+%left TRY
 
 %start syntax
 
@@ -214,8 +217,9 @@ SENTENCE
 	| DEF_RETURN
 	| DEF_USE
 	| DEF_CALL_FUNCTION
+	| TRYCATCH
 	| COMMENT
-		{ $$ = `` }
+		{ $$ = ``; }
 ;
 
 DEF_USE
@@ -381,4 +385,15 @@ TYPE
 	| TYPE_FLOAT
 	| TYPE_ARRAY
 	| TYPE_BOOL
+;
+
+/* try catch */
+
+TRYCATCH
+	: TRY
+		SENTENCE*[try]
+	  CATCH
+	  	SENTENCE*[catch]
+	  END
+	  { $$ = seg.try_catch($try, $catch); }
 ;

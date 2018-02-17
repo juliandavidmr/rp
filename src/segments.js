@@ -184,9 +184,25 @@ module.exports = {
 			name = name.startsWith('@') ? name.substring(1, name.length) : name;
 			return `$this->${name}(${args.toString()})`
 		}
-		return `${name}(${args.toString()})`
+		return `${name}(${args.toString()});`
 	},
 	call_function: function (name, exec) {
-		return `$${name}->${exec.toString()}`
+		return `$${name}->${exec}`
+	},
+	require: function (req, pkg) {
+		return `${req}(${pkg});`
+	},
+	/**
+	 * @param {string} obj
+	 */
+	initialize: function (obj, args) {
+		args = args ? args : ''
+		return `new ${obj}(${args})`
+	},
+	item_array: function (id, value) {
+		return `${id}=>(${value})`
+	},
+	array: function (value) {
+		return `array(${value})`
 	}
 }

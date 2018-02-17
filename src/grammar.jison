@@ -402,6 +402,8 @@ FUNCTION_ARGS
 EXEC_FUNCTION
 	: ID PAR_OPEN FUNCTION_ARGS*[fargs] PAR_CLOSE
 		{ $$ = seg.exec_function($ID, $fargs) }
+	| ATTR PAR_OPEN FUNCTION_ARGS*[fargs] PAR_CLOSE
+		{ $$ = seg.exec_function($ATTR, $fargs, true) }
 ;
 
 CALL_FUNTION

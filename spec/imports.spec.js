@@ -16,6 +16,6 @@ describe("Imports", function () {
                 def __constructor
                 end
 			end
-		`)).toEqual('use My\\Full\\Namespace;,class Pet { $state=true;,function __constructor(){  } }');
+		`)).toEqual('use My\\Full\\Namespace; class Pet { $state=true;,function __constructor(){  } }');		
 	});
 });

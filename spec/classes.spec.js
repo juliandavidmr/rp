@@ -24,6 +24,6 @@ describe("Classes", function () {
 			class Pet
 				state = true
 			end
-		`)).toEqual('use My\\Full\\Namespace;,class Pet { $state=true; }');
+		`)).toEqual('use My\\Full\\Namespace; class Pet { $state=true; }');
 	});
 });

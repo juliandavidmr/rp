@@ -2,7 +2,7 @@
   "name": "jison",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/grammar.js",
+  "main": "./src/index.js",
   "scripts": {
     "build": "cd src && jison grammar.jison",
     "start": "npm run build && npm run test",
@@ -13,6 +13,7 @@
   "license": "GPL v3",
   "dependencies": {},
   "devDependencies": {
-    "jasmine": "^2.8.0"
+    "jasmine": "^3.0.0",
+    "jison-gho": "^0.6.1-215"
   }
 }

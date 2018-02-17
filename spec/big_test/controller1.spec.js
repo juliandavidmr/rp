@@ -11,7 +11,7 @@ describe("Big test", function () {
         use "Slim\\Http\\Response"
         use "Respect\\Validation\\Validator as v"
 
-        app.group("/dynamic", def anonymous() 
+        app.group("/dynamic", def anonymous()
         end)
         `).trim()).toEqual(`use Slim\\Http\\Request; use Slim\\Http\\Response; use Respect\\Validation\\Validator as v; $app->group("/dynamic",function anonymous(){  })`);
 	});	

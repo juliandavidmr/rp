@@ -2,7 +2,11 @@ const rp = require('./')
 
 var res = rp(`
 app.group("/dynamic", def anonymous() 
-    
+	
+	@map("GET", "/query/{id}[/{params:.*}]", def x
+		id = "id"
+	end)
+
     /* $this->map([
 		'GET',
 		'POST'

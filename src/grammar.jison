@@ -34,7 +34,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "#"						return 'HASH'
 "?"						return 'QUESTION'
 "~"						return 'TILDE'
-"_"						return 'UNDERSCORE'    
+"_"						return 'UNDERSCORE'
 "def"					return 'DEF'
 "end"					return 'END'
 "not"					return 'NOT'
@@ -216,7 +216,8 @@ SENTENCE
 	| CAST
 	| DEF_RETURN
 	| DEF_USE
-	| DEF_CALL_FUNCTION
+	| EXEC_FUNCTION
+	| CALL_FUNTION
 	| TRYCATCH
 	| COMMENT
 		{ $$ = ``; }
@@ -263,19 +264,6 @@ DEF_ARGUMENT
 DEF_RETURN
 	: RETURN e
 		{ $$ = seg.return($e); }
-;
-
-// defines input argument.
-ARGUMENT_CALL
-	: ID
-;
-
-ARGUMENTS_CALL
-	: ARGUMENT_CALL COMMA?
-;
-
-DEF_CALL_FUNCTION
-	: ID PAR_OPEN ARGUMENTS_CALL* PAR_CLOSE
 ;
 
 ECHO
@@ -396,4 +384,27 @@ TRYCATCH
 	  	SENTENCE*[catch]
 	  END
 	  { $$ = seg.try_catch($try, $catch); }
+;
+
+/* call functions */
+
+FUNCTION_ARG
+	: ID
+	| NUMBER
+	| STRING
+	| FUNCTION
+;
+
+FUNCTION_ARGS
+	: FUNCTION_ARG COMMA?
+;
+
+EXEC_FUNCTION
+	: ID PAR_OPEN FUNCTION_ARGS*[fargs] PAR_CLOSE
+		{ $$ = seg.exec_function($ID, $fargs) }
+;
+
+CALL_FUNTION
+	: ID DOT EXEC_FUNCTION[exec]
+		{ $$ = seg.call_function($ID, $exec) }
 ;

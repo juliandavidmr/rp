@@ -149,5 +149,11 @@ module.exports = {
     },
     try_catch: function (sentence_try, sentence_catch) {
         return `try { ${sentence_try} } catch (Exception $e) { ${sentence_catch} }`
+    },
+    exec_function: function (name, args) {
+        return `${name}(${args.toString()})`
+    },
+    call_function: function (name, exec) {
+        return `$${name}->${exec.toString()}`
     }
 }

@@ -26,4 +26,13 @@ describe("Variable", function () {
 		expect(base('protected xyz')).toEqual('protected $xyz=null;');
 		expect(base('static _xyz_')).toEqual('static $_xyz_=null;');
 	});
+
+	it("Array", function () {
+		expect(base(`
+			[
+				item -> "Hello",
+				item2 -> 23,
+			]
+		`.trim())).toEqual(`array(item=>("Hello"),item2=>(23))`);
+	});
 });

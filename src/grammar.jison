@@ -2,7 +2,7 @@
 
 %{
 	const trans = require('./transpile')
-	const seg = require('./segments')	
+	const seg = require('./segments')
 %}
 
 /* lexical grammar */
@@ -19,6 +19,9 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "false"					return 'FALSE'
 
 /* reserved words */
+"new"					return 'NEW'
+"require"				return 'REQUIRE'
+"require_once"			return 'REQUIRE_ONCE'
 "try"					return 'TRY'
 "catch"					return 'CATCH'
 "use"					return 'USE'
@@ -70,6 +73,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 "="						return 'ASSIGN'
 "=="					return 'EQUAL'
 "==="					return 'IDENTICAL'
+"->"					return '->'
 "*"						return '*'
 "/"						return '/'
 "-"						return '-'
@@ -93,6 +97,7 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 {id}					return 'ID'
 @{id}					return 'ATTR'
 \"(?:\"\"|[^"])*\"		return 'STRING'
+\n						return 'BREAKLINE'
 
 <<EOF>>					return 'EOF'
 .						return 'INVALID'
@@ -118,7 +123,9 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 %left DOT
 %left DOT2
 %left AND
+%left COMMA
 %left TRY
+%left '[' ']'
 
 %start syntax
 
@@ -203,6 +210,8 @@ e
 	| SNIPPETS
 	| CAST
 	| DEF_ARRAY
+	| EXEC_FUNCTION
+	| DEF_INSTANCE_OBJECT
 ;
 
 SENTENCE
@@ -219,6 +228,9 @@ SENTENCE
 	| EXEC_FUNCTION
 	| CALL_FUNTION
 	| TRYCATCH
+	| DEF_REQUIRE
+	| DEF_INSTANCE_OBJECT
+	| DEF_ARRAY
 	| COMMENT
 		{ $$ = ``; }
 ;
@@ -241,8 +253,26 @@ BOOLEAN
 	| FALSE
 ;
 
-DEF_ARRAY /* TODO */
-	: '[' ']'
+/* array */
+
+DEF_ITEM_ARRAY
+	: ID '->' STRING[val] COMMA
+		{ $$ = seg.item_array($ID, $val) }
+	| ID '->' NUMBER[val] COMMA
+		{ $$ = seg.item_array($ID, $val) }
+	| ID '->' SENTENCE[val] COMMA
+		{ $$ = seg.item_array($ID, $val) }
+	| ID '->' DEF_ITEM_ARRAY[val] COMMA
+		{ $$ = seg.item_array($ID, $val) }
+	| ID '->' DEF_ARRAY[val] COMMA
+		{ $$ = seg.item_array($ID, $val) }
+;
+
+DEF_ARRAY
+	: '['
+		DEF_ITEM_ARRAY+[value]
+	']'
+		{ $$ = seg.array($value) }
 ;
 
 /* functions */
@@ -253,7 +283,7 @@ FUNCTION
 		END
 			{
 				$$ = seg.def_function($name, $args, $content, $priv);				
-			}
+			}	
 ;
 
 DEF_ARGUMENT
@@ -409,4 +439,25 @@ EXEC_FUNCTION
 CALL_FUNTION
 	: ID DOT EXEC_FUNCTION[exec]
 		{ $$ = seg.call_function($ID, $exec) }
+;
+
+/* require */
+
+REQ
+	: REQUIRE
+	| REQUIRE_ONCE
+;
+
+DEF_REQUIRE
+	: REQ STRING[pkg]
+		{ $$ = seg.require($REQ, $pkg) }
+;
+
+/* initializacion object */
+
+DEF_INSTANCE_OBJECT
+	: NEW ID
+		{ $$ = seg.initialize($ID) }
+	| NEW ID PAR_OPEN PAR_CLOSE
+		{ $$ = seg.initialize($ID) }
 ;

@@ -17,6 +17,7 @@ __rp__ is an abstraction of the programming language php. It has clean syntax, f
 - [Examples](./examples)
 - [Language Reference](#language-reference)
   - [Generic](#generic)
+    - [Arrays](#arrays)
     - [Imports](#imports)
     - [Declare variable](#declare-variable)
     - [Print message](#print-message)
@@ -39,6 +40,26 @@ rp detects and solves basic mathematical expressions,
 thus shortening the resulting source code in php.
 
 ### Generic
+
+#### Arrays
+
+```py
+[
+    item -> "Hello",
+    item2 -> 23,
+]
+```
+
+_The equivalent in PHP is:_
+
+```php
+array(
+    item  => ("Hello"),
+    item2 => (23)
+)
+```
+
+_Go to [resources](#resources)_
 
 #### Imports
 
